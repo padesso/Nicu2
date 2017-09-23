@@ -71,9 +71,7 @@
                   EnableHighResolution: True
 [Core] Msg:     Assembly loaded: System.Drawing 4.0.0.0
 [Core] Msg:     Available display devices:
-[Core] Msg:       First : 3000x2000 at  60 Hz, 32 bpp, pos [-3000,   0]
-[Core] Msg:       Second: 1920x1200 at  59 Hz, 32 bpp, pos [1920,   0]
-[Core] Msg:       Third : 1920x1200 at  59 Hz, 32 bpp, pos [   0,   0] (Primary)
+[Core] Msg:       First : 3000x2000 at  60 Hz, 32 bpp, pos [   0,   0] (Primary)
 [Core] Msg: Initializing IAudioBackend...
 [Core] Msg:   OpenAL (OpenTK)...
 [Core] Msg:     OpenAL Drivers not found. Using 64 Bit software fallback.
@@ -122,8 +120,3 @@
 [Core] Msg:   ...done!
 [Core] Msg: Assembly loaded: FarseerDuality 4.1.4.0
 [Core] Msg: Loading Resource 'Data\Scene.Scene.res'
-[Core] Msg: Determining OpenGL context capabilities...
-[Core] Msg: Shutting down OpenGL 2.1 (OpenTK)...
-[Core] Msg: Shutting down OpenAL (OpenTK)...
-[Core] Msg: Shutting down .Net Framework...
-[Core] Msg: DualityApp terminated

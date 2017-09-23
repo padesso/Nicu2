@@ -2,40 +2,40 @@
 --------------------[ TimeCounter ]---------------
 
 Name                          Avg. Value    Min. Value    Max. Value         Samples 
-Duality\Frame:                      3.35          0.00        164.13             398 
-  Update:                           0.40          0.00         71.56             398 
-    Physics:                        0.05          0.00         16.16             398 
-      Contacts:                     0.00          0.00          0.87             398 
-      Controller:                   0.00          0.00          0.00             398 
-      Continous:                    0.02          0.00          6.57             398 
-      AddRemove:                    0.00          0.00          0.05             398 
-      Solve:                        0.02          0.00          6.68             398 
-    Scene:                          0.07          0.00          9.74             398 
-      All Components:               0.05          0.00          3.79             398 
-      Transform:                    0.00          0.00          0.84             397 
-    Audio:                          0.02          0.00          2.70             398 
-  Render:                           2.73          0.00         87.44             398 
-    SwapBuffers:                    2.50          0.00         73.83             398 
-    QueryVisibleRenderers:          0.01          0.00          1.88             398 
-    CollectDrawcalls:               0.00          0.00          0.02             398 
-    OptimizeDrawcalls:              0.00          0.00          0.01             398 
-    ProcessDrawcalls:               0.01          0.00          3.25             398 
+Duality\Frame:                      3.35          0.00        279.77           25801 
+  Update:                           0.17          0.00        143.50           25801 
+    Physics:                        0.01          0.00         51.87           25801 
+      Contacts:                     0.00          0.00          1.39           25801 
+      Controller:                   0.00          0.00          0.79           25801 
+      Continous:                    0.00          0.00         12.30           25801 
+      AddRemove:                    0.00          0.00          0.44           25801 
+      Solve:                        0.00          0.00         34.89           25801 
+    Scene:                          0.03          0.00         17.86           25801 
+      All Components:               0.03          0.00          5.92           25801 
+      Transform:                    0.00          0.00          1.08           25800 
+    Audio:                          0.01          0.00          7.03           25801 
+  Render:                           3.12          0.00        113.17           25801 
+    SwapBuffers:                    3.02          0.00         45.54           25801 
+    QueryVisibleRenderers:          0.00          0.00          2.67           25801 
+    CollectDrawcalls:               0.00          0.00          0.16           25801 
+    OptimizeDrawcalls:              0.00          0.00          0.17           25801 
+    ProcessDrawcalls:               0.00          0.00          2.57           25801 
     PostProcessing:                 0.00          0.00          0.00               1 
-  Log:                           1334.05          1.67       2666.43               2 
+  Log:                            148.17          4.95        291.38               2 
   VisualPicking:                    0.00          0.00          0.00               1 
-  Unaccounted:                     -6.48      -2666.43         32.47             398 
-Cameras\MainCamera:                 0.23          0.05         43.50             397 
+  Unaccounted:                      0.05       -291.38         33.29           25801 
+Cameras\MainCamera:                 0.09          0.02         67.65           25800 
 
 --------------------[ StatCounter ]---------------
 
 Name                                         Avg. Value    Min. Value    Max. Value         Samples 
-Duality\Stats\Audio\NumPlaying2D:                     0             0             0             398 
-Duality\Stats\Audio\NumPlaying3D:                     0             0             0             398 
-Duality\Stats\Render\NumDrawcalls:                    0             0             0             398 
-Duality\Stats\Render\NumRawBatches:                   0             0             0             398 
-Duality\Stats\Render\NumMergedBatches:                0             0             0             398 
-Duality\Stats\Render\NumOptimizedBatches:             0             0             0             398 
-Duality\Stats\Memory\TotalUsage:                   6283          4721          9782             398 
-Duality\Stats\Memory\GarbageCollect0:                 5             -             -               - 
-Duality\Stats\Memory\GarbageCollect1:                 3             -             -               - 
-Duality\Stats\Memory\GarbageCollect2:                 3             -             -               - 
+Duality\Stats\Audio\NumPlaying2D:                     0             0             0           25801 
+Duality\Stats\Audio\NumPlaying3D:                     0             0             0           25801 
+Duality\Stats\Render\NumDrawcalls:                    0             0             0           25801 
+Duality\Stats\Render\NumRawBatches:                   0             0             0           25801 
+Duality\Stats\Render\NumMergedBatches:                0             0             0           25801 
+Duality\Stats\Render\NumOptimizedBatches:             0             0             0           25801 
+Duality\Stats\Memory\TotalUsage:                   5380          4179          7018           25801 
+Duality\Stats\Memory\GarbageCollect0:               169             -             -               - 
+Duality\Stats\Memory\GarbageCollect1:                12             -             -               - 
+Duality\Stats\Memory\GarbageCollect2:                 4             -             -               - 

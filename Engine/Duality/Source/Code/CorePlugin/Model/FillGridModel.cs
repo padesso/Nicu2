@@ -30,8 +30,9 @@ namespace Duality_.Model
             myColor = null;
 
             //TODO: pass number of players and instantiate in a loop
-            playerTerritories[0] = new List<Point2>(mySizeX * mySizeY);    //Player
-            playerTerritories[1] = new List<Point2>(mySizeX * mySizeY);    //Enemy
+            playerTerritories = new List<List<Point2>>(2);
+            playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Player
+            playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Enemy
         }
         
         private void Cleanup()
