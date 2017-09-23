@@ -298,8 +298,8 @@ namespace Duality_.Model
             // Switch owners
             while (posStack.Count() > 0)
             {
-                // Pop off the last item.
-                Point2 p = posStack.Last();
+                // Pop off the top item.
+                Point2 p = posStack.First();
                 posStack.RemoveAt(0);
 
                 // A tile can only be on the stack at this point if it wasn't owned
