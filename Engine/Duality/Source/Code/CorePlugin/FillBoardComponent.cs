@@ -4,9 +4,9 @@ using System.Linq;
 
 using Duality;
 
-namespace Duality_
+namespace FloodFill
 {
-	public class YourCustomComponentType : Component
+	public class FillBoardComponent : Component
 	{
 		
 	}

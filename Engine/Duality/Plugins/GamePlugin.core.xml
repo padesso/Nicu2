@@ -9,5 +9,10 @@
             Defines a Duality core plugin.
             </summary>
         </member>
+        <member name="M:Duality_.Model.FillGridModel.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
     </members>
 </doc>
