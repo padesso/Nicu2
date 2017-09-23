@@ -4,10 +4,11 @@ using System.Linq;
 
 using Duality;
 using Duality_.Model;
+using System.Diagnostics;
 
 namespace FloodFill
 {
-    public class FillBoardComponent : Component, ICmpInitializable
+    public class FillBoardComponent : Component, ICmpInitializable, ICmpUpdatable
     {
         FillGridModel fillGrid;
 
@@ -18,11 +19,6 @@ namespace FloodFill
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
 
-                fillGrid.FloodFill(0, 1);
-                fillGrid.FloodFill(1, 2);
-                fillGrid.FloodFill(0, 2);
-                fillGrid.FloodFill(1, 4);
-
                 int i = 1;
             }
         }
@@ -30,6 +26,25 @@ namespace FloodFill
         public void OnShutdown(ShutdownContext context)
         {
             fillGrid = null;
+        }
+
+        int debugTickDelay = 1000;
+        int debugTickCount = 1000;
+
+        public void OnUpdate()
+        {
+            if (debugTickCount >= debugTickDelay)
+            {
+                Debug.WriteLine(fillGrid.DebugPrintColors());
+                debugTickCount = 0;
+
+                Random rand = new Random();
+                fillGrid.FloodFill(0, rand.Next(0, 5));
+            }
+            else
+            {
+                debugTickCount++;
+            }
         }
     }
 }

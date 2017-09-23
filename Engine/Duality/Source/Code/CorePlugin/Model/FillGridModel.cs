@@ -34,6 +34,22 @@ namespace Duality_.Model
             playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Player
             playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Enemy
         }
+
+        public string DebugPrintColors()
+        {
+            string board = string.Empty;
+
+            for(int col = 0; col < mySizeX; col++)
+            {
+                for(int row = 0; row < mySizeY; row++)
+                {
+                    board += Color(col,row).ToString() + " ";
+                }
+                board += "\n";
+            }
+
+            return board;
+        }
         
         private void Cleanup()
         {
@@ -248,7 +264,7 @@ namespace Duality_.Model
         {
             // Change all of our current territory to the new color.
             int cTerritory = playerTerritories[owner].Count();
-            for (int i = 0; i < cTerritory; ++i)
+            for (int i = 0; i < cTerritory; i++)
             {
                 Point2 p = playerTerritories[owner][i];
                 myColor[p.X, p.Y] = color;

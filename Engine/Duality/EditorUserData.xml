@@ -40,6 +40,15 @@
               <Item>Duality.Editor.Plugins.CamView.CamViewLayers.GridCamViewLayer</Item>
             </ActiveLayers>
           </State>
+          <State type="Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState">
+            <ActiveLayers>
+              <Item>Duality.Editor.Plugins.CamView.CamViewLayers.GridCamViewLayer</Item>
+            </ActiveLayers>
+            <ObjectVisibility>
+              <Item>Duality.Plugins.Tilemaps.Tilemap</Item>
+              <Item>Duality.Plugins.Tilemaps.ICmpTilemapRenderer</Item>
+            </ObjectVisibility>
+          </State>
         </States>
       </CamView>
     </Plugin>
