@@ -12,8 +12,8 @@ namespace Duality_.Model
         private int sizeX;
         private int sizeY;
 
-        private List<int[,]> myColorList;
-        private List<int[,]> myOwnerList;
+        private Stack<int[,]> myColorStack;
+        private Stack<int[,]> myOwnerStack;
 
         protected int mySizeX;
         protected int mySizeY;
@@ -66,18 +66,19 @@ namespace Duality_.Model
 
         private void CreateColorOwnerStack(int depth)
         {
-            myColorList = new List<int[,]>(depth);
-            myOwnerList = new List<int[,]>(depth);
+            myColorStack = new Stack<int[,]>(depth);
+            myOwnerStack = new Stack<int[,]>(depth);
             for(int i = 0; i < depth; i++)
             {
-                myColorList[i] = CreateArray();
-                myOwnerList[i] = CreateArray();
+                myColorStack.Push(CreateArray());
+                myOwnerStack.Push(CreateArray());
             }
         }
 
         private void DeleteColorOwnerStack(int depth)
         {
-            myColorList.Clear();
+            myColorStack.Clear();
+            myOwnerStack.Clear();
         }
 
         private float Negamax(int depth, float alpha, float beta, int owner, int? bestMove )
@@ -92,7 +93,7 @@ namespace Duality_.Model
                 {
                     for (int row = 0; row < mySizeY; row++)
                     {
-                        if (myOwner[col, row] == 0 - 1)
+                        if (myOwner[col, row] == -1)
                             continue;
 
                         locScore += col > mySizeX / 2 ? mySizeX - col : col;
@@ -109,6 +110,7 @@ namespace Duality_.Model
                     }
                 }
                 evaluation += locScore;
+
                 if (owner == 0)
                 {
                     return evaluation;
@@ -120,8 +122,8 @@ namespace Duality_.Model
             }
 
             // Make copies of the current arrays and territories so we can restore them.
-            int[,] origColor = myColorList[depth - 1];
-            int[,] origOwner = myOwnerList[depth - 1];
+            int[,] origColor = myColorStack.ElementAt(depth - 1);
+            int[,] origOwner = myOwnerStack.ElementAt(depth - 1);
             AssignArray(ref origColor, ref myColor);
             AssignArray(ref origOwner, ref myOwner);
 
@@ -141,7 +143,7 @@ namespace Duality_.Model
                 FloodFill(owner, testColor);
 
                 // Determine its value
-                float value = -Negamax(depth - 1, -beta, -alpha, 1 - owner, currBestMove);
+                float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, currBestMove);
 
                 // Undo move
                 AssignArray(ref myColor, ref origColor);
@@ -150,15 +152,15 @@ namespace Duality_.Model
                 playerTerritories[1] = origTerritory[1];
 
                 // If the move beats our current best option, set it.
-                if (value > currBestValue)
+                if (val > currBestValue)
                 {
-                    currBestValue = value;
+                    currBestValue = val;
                     bestMove = testColor;
                 }
 
                 // Alpha-Beta Pruning (check Wikipedia)
-                if (value > alpha)
-                    alpha = value;
+                if (val > alpha)
+                    alpha = val;
                 if (alpha >= beta)
                     break;
             }
@@ -166,7 +168,6 @@ namespace Duality_.Model
             return currBestValue;
         }
 
-        //TODO: test and optimize...
         protected void AssignArray(ref int[,] into, ref int[,] from)
         {
             for (int col = 0; col < mySizeX; ++col)
@@ -272,7 +273,7 @@ namespace Duality_.Model
 
             // Create the position stack
             //Vector<Point2I> posStack(30);
-            List<Point2> posStack = new List<Point2>(30);
+            Stack<Point2> posStack = new Stack<Point2>(30);
 
             // For every tile we own, we'll look at the adjacent tiles.
             // If those tiles are unowned,
@@ -283,24 +284,24 @@ namespace Duality_.Model
                 Point2 p = playerTerritories[owner][i];
 
                 if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
-                    posStack.Add(new Point2(p.X - 1, p.Y));
+                    posStack.Push(new Point2(p.X - 1, p.Y));
 
                 if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
-                    posStack.Add(new Point2(p.X + 1, p.Y));
+                    posStack.Push(new Point2(p.X + 1, p.Y));
 
                 if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
-                    posStack.Add(new Point2(p.X, p.Y - 1));
+                    posStack.Push(new Point2(p.X, p.Y - 1));
 
                 if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
-                    posStack.Add(new Point2(p.X, p.Y + 1));
+                    posStack.Push(new Point2(p.X, p.Y + 1));
             }
 
             // Switch owners
             while (posStack.Count() > 0)
             {
                 // Pop off the top item.
-                Point2 p = posStack.First();
-                posStack.RemoveAt(0);
+                //Point2 p = posStack.First();
+                Point2 p = posStack.Pop();
 
                 // A tile can only be on the stack at this point if it wasn't owned
                 // by anybody.  We can safely claim it if matches our current color.
@@ -313,26 +314,152 @@ namespace Duality_.Model
 
                     // Push adjacent tiles onto the stack
                     if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
-                        posStack.Add(new Point2(p.X - 1, p.Y));
+                        posStack.Push(new Point2(p.X - 1, p.Y));
 
                     if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
-                        posStack.Add(new Point2(p.X + 1, p.Y));
+                        posStack.Push(new Point2(p.X + 1, p.Y));
 
                     if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
-                        posStack.Add(new Point2(p.X, p.Y - 1));
+                        posStack.Push(new Point2(p.X, p.Y - 1));
 
                     if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
-                        posStack.Add(new Point2(p.X, p.Y + 1));
+                        posStack.Push(new Point2(p.X, p.Y + 1));
                 }
             }
+
+            //FillTrapped(owner, color);
         }
 
-        public int BestMove(int owner, int plies)
+        private void FillTrapped(int owner, int color)
+        {
+            // I'm pre-sizing these vectors so that they don't have to
+            // grow while the algorithm is running.  Note: they still
+            // are size = 0, it's just that they have space for 200
+            // objects before any memory management has to occur.
+            Stack<Point2> trappedRegion = new Stack<Point2>(200);
+            Stack<Point2> searchStack = new Stack<Point2>(200);
+
+            // While we iterate over the array of tiles, we want to skip
+            // any un-owned tile that we already visited earlier in the
+            // algorithm.
+            //int[,] visited = CreateArray();
+            int[,] visited = InitArray(0); //init to 0 (false)
+
+            // Iterate over the entire array
+            for (int col = 0; col < mySizeX; ++col)
+            {
+                for (int row = 0; row < mySizeY; ++row)
+                {
+                    // Skip the tile if it's owned by somebody.
+                    if (myOwner[col,row] != -1)
+                        continue;
+
+                    // Skip the tile if we've already looked at it.
+                    if (visited[col,row] == 1)
+                        continue;
+
+                    // Push the unowned tile onto the stack, then
+                    // set the list of trapped tiles to be empty.
+                    searchStack.Push(new Point2(col, row));
+                    trappedRegion.Clear();
+
+                    // The following code will get a group of un-owned tiles
+                    // that are together (trappedRegion), and will mark 
+                    // all of those tiles as visited.
+                    while (searchStack.Count() > 0)
+                    {
+                        // Pop off the top of the stack.
+                        Point2 p = searchStack.Last();
+                        searchStack.Pop();
+
+                        if (visited[p.X, p.Y] == 1)
+                            continue;
+
+                        // Set as visited.
+                        visited[p.X, p.Y] = 1;
+
+                        // Add the tile to trappedRegion.
+                        trappedRegion.Push(p);
+
+                        // Push adjacent tiles onto the stack.
+                        // Note: we never push a tile onto the stack if it
+                        // belong to somebody, so we don't need to check
+                        // for that in this depth-first search.
+                        if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
+                            searchStack.Push(new Point2(p.X - 1, p.Y));
+
+                        if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
+                            searchStack.Push(new Point2(p.X + 1, p.Y));
+
+                        if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
+                            searchStack.Push(new Point2(p.X, p.Y - 1));
+
+                        if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
+                            searchStack.Push(new Point2(p.X, p.Y + 1));
+                    }
+
+                    // We've now found a contiguous group of un-owned tiles
+                    // (trappedRegion).  If any of those tiles are adjacent to
+                    // the opponent, then we're going to ignore the list.
+                    //
+                    // There's 3 cases here:
+                    // * Un-owned region is adjacent to only the current player
+                    // * Un-owned region is adjacent to both players
+                    // * Un-owned region is adjacent to only the opponent
+                    //
+                    // The third case shouldn't happen because those tiles should
+                    // have been filled in on his turn.  Therefore, we only will
+                    // have the first 2 cases.  And in those 2, the only time
+                    // that the tiles aren't trapped is if they happen to touch
+                    // the opponent.
+
+                    // We're going to assume it's a trapped region to start.  The
+                    // for-loop will bail when we get to the end of the list *OR*
+                    // whenever we find that the region isn't trapped.
+                    bool isATrappedRegion = true;
+                    int regionSize = trappedRegion.Count();
+                    for (int i = 0; i < regionSize && isATrappedRegion; ++i)
+                    {
+                        Point2 p = trappedRegion.ElementAt(i);
+                        if (p.X > 0 && myOwner[p.X - 1, p.Y] != -1 && myOwner[p.X - 1, p.Y] != owner)
+                        {
+                            isATrappedRegion = false;
+                        }
+                        if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] != -1 && myOwner[p.X + 1, p.Y] != owner)
+                        {
+                            isATrappedRegion = false;
+                        }
+                        if (p.Y > 0 && myOwner[p.X, p.Y - 1] != -1 && myOwner[p.X, p.Y - 1] != owner)
+                        {
+                            isATrappedRegion = false;
+                        }
+                        if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] != -1 && myOwner[p.X, p.Y + 1] != owner)
+                        {
+                            isATrappedRegion = false;
+                        }
+                    }
+
+                    // We got through the loop!  Are we *still* a trapped region?
+                    if (isATrappedRegion)
+                    {
+                        for (int i = 0; i < regionSize; ++i)
+                        {
+                            Point2 p = trappedRegion.ElementAt(i);
+                            myOwner[p.X, p.Y] = owner;
+                            myColor[p.X, p.Y] = color;
+                            playerTerritories[owner].Add(p);
+                        }
+                    }
+                } // Next row
+            } // Next col
+        }
+
+        public int? BestMove(int owner, int plies)
         {
             CreateColorOwnerStack(plies);
 
             // Init to an invaild move.
-            int bestMove = -1;
+            int? bestMove = -1;
             Negamax(plies, -mySizeX * mySizeY, mySizeX * mySizeY, owner, bestMove);
 
             DeleteColorOwnerStack(plies);

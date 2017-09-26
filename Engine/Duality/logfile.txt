@@ -124,6 +124,5 @@
 [Core] Msg:   ...done!
 [Core] Msg: Assembly loaded: FarseerDuality 4.1.4.0
 [Core] Msg: Loading Resource 'Data\Scene.Scene.res'
-[Core] Msg: Assembly loaded: Microsoft.VisualStudio.Debugger.Runtime 14.0.0.0
 [Core] Msg: Assembly loaded: System.Configuration 4.0.0.0
 [Core] Msg: Determining OpenGL context capabilities...

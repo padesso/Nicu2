@@ -174,6 +174,130 @@ void FillGridModel::floodFill( S32 owner, S32 color )
         posStack.push_back( Point2I( p.x, p.y + 1 ) );
     }
   }
+
+  fillTrapped( owner, color );
+}
+
+void FillGridModel::fillTrapped( S32 owner, S32 color )
+{
+  // I'm pre-sizing these vectors so that they don't have to
+  // grow while the algorithm is running.  Note: they still
+  // are size = 0, it's just that they have space for 200
+  // objects before any memory management has to occur.
+  Vector<Point2I> trappedRegion(200);
+  Vector<Point2I> searchStack(200);
+
+  // While we iterate over the array of tiles, we want to skip
+  // any un-owned tile that we already visited earlier in the
+  // algorithm.
+  S32 **visited = createArray();
+  initArray( visited, false );
+
+  // Iterate over the entire array
+  for( int col = 0; col < mySizeX; ++col )
+  {
+    for( int row = 0; row < mySizeY; ++row )
+    {
+      // Skip the tile if it's owned by somebody.
+      if( myOwner[col][row] != -1 ) continue;
+
+      // Skip the tile if we've already looked at it.
+      if( visited[col][row] ) continue;
+
+      // Push the unowned tile onto the stack, then
+      // set the list of trapped tiles to be empty.
+      searchStack.push_back( Point2I( col, row ) );
+      trappedRegion.clear();
+
+      // The following code will get a group of un-owned tiles
+      // that are together (trappedRegion), and will mark 
+      // all of those tiles as visited.
+      while( searchStack.size() > 0 )
+      {
+        // Pop off the top of the stack.
+        Point2I p = searchStack.last();
+        searchStack.pop_back();
+
+        if( visited[p.x][p.y] ) continue;
+
+        // Set as visited.
+        visited[p.x][p.y] = true;
+
+        // Add the tile to trappedRegion.
+        trappedRegion.push_back( p );
+
+        // Push adjacent tiles onto the stack.
+        // Note: we never push a tile onto the stack if it
+        // belong to somebody, so we don't need to check
+        // for that in this depth-first search.
+        if( p.x > 0 && myOwner[p.x - 1][p.y] == -1 )
+          searchStack.push_back( Point2I( p.x - 1, p.y ) );
+        if( p.x < mySizeX - 1 && myOwner[p.x + 1][p.y] == -1 )
+          searchStack.push_back( Point2I( p.x + 1, p.y ) );
+        if( p.y > 0 && myOwner[p.x][p.y - 1] == -1 )
+          searchStack.push_back( Point2I( p.x, p.y - 1 ) );
+        if( p.y < mySizeY - 1 && myOwner[p.x][p.y + 1] == -1 )
+          searchStack.push_back( Point2I( p.x, p.y + 1 ) );
+      }
+
+      // We've now found a contiguous group of un-owned tiles
+      // (trappedRegion).  If any of those tiles are adjacent to
+      // the opponent, then we're going to ignore the list.
+      //
+      // There's 3 cases here:
+      // * Un-owned region is adjacent to only the current player
+      // * Un-owned region is adjacent to both players
+      // * Un-owned region is adjacent to only the opponent
+      //
+      // The third case shouldn't happen because those tiles should
+      // have been filled in on his turn.  Therefore, we only will
+      // have the first 2 cases.  And in those 2, the only time
+      // that the tiles aren't trapped is if they happen to touch
+      // the opponent.
+
+      // We're going to assume it's a trapped region to start.  The
+      // for-loop will bail when we get to the end of the list *OR*
+      // whenever we find that the region isn't trapped.
+      bool isATrappedRegion = true;
+      S32 regionSize = trappedRegion.size();
+      for( S32 i = 0; i < regionSize && isATrappedRegion; ++i )
+      {
+        const Point2I& p = trappedRegion[i];
+        if( p.x > 0 && 
+            myOwner[p.x - 1][p.y] != -1 && myOwner[p.x - 1][p.y] != owner )
+        {
+          isATrappedRegion = false;
+        }
+        if( p.x < mySizeX - 1 && 
+            myOwner[p.x + 1][p.y] != -1 && myOwner[p.x + 1][p.y] != owner )
+        {
+          isATrappedRegion = false;
+        }
+        if( p.y > 0 && 
+            myOwner[p.x][p.y - 1] != -1 && myOwner[p.x][p.y - 1] != owner )
+        {
+          isATrappedRegion = false;
+        }
+        if( p.y < mySizeY - 1 && 
+            myOwner[p.x][p.y + 1] != -1 && myOwner[p.x][p.y + 1] != owner )
+        {
+          isATrappedRegion = false;
+        }
+      }
+
+      // We got through the loop!  Are we *still* a trapped region?
+      if( isATrappedRegion )
+      {
+        for( S32 i = 0; i < regionSize; ++i )
+        {
+          const Point2I& p = trappedRegion[i];
+          myOwner[p.x][p.y] = owner;
+          myColor[p.x][p.y] = color;
+          myTerritory[owner].push_back( p );
+        }
+      }
+    } // Next row
+  } // Next col
 }
 
 S32 FillGridModel::bestMove( S32 owner, S32 plies )
