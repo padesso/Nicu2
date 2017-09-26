@@ -81,7 +81,7 @@ namespace Duality_.Model
             myOwnerStack.Clear();
         }
 
-        private float Negamax(int depth, float alpha, float beta, int owner, int? bestMove )
+        private float Negamax(int depth, float alpha, float beta, int owner, int bestMove )
         {
             if (depth == 0 || (Score(0) + Score(1) == mySizeX * mySizeY))
             {
@@ -124,13 +124,14 @@ namespace Duality_.Model
             // Make copies of the current arrays and territories so we can restore them.
             int[,] origColor = myColorStack.ElementAt(depth - 1);
             int[,] origOwner = myOwnerStack.ElementAt(depth - 1);
-            AssignArray(ref origColor, ref myColor);
-            AssignArray(ref origOwner, ref myOwner);
+
+            origColor = (int[,])myColor.Clone();
+            origOwner = (int[,])myOwner.Clone();
 
             List<Stack<Point2>> origTerritory = new List<Stack<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
 
             float currBestValue = -mySizeX * mySizeY;
-            int? currBestMove = null; //TODO: this seems extraneous...
+            int currBestMove = 0; //TODO: this seems extraneous...
 
             for (int testColor = 0; testColor <= 5; testColor++)
             {
@@ -144,8 +145,8 @@ namespace Duality_.Model
                 float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, currBestMove);
 
                 // Undo move
-                AssignArray(ref myColor, ref origColor);
-                AssignArray(ref myOwner, ref origOwner);
+                myColor = (int[,])origColor.Clone();
+                myOwner = (int[,])origOwner.Clone();
                 playerTerritories[0] = origTerritory[0];
                 playerTerritories[1] = origTerritory[1];
 
@@ -164,17 +165,6 @@ namespace Duality_.Model
             }
 
             return currBestValue;
-        }
-
-        protected void AssignArray(ref int[,] into, ref int[,] from)
-        {
-            for (int col = 0; col < mySizeX; ++col)
-            {
-                for (int row = 0; row < mySizeY; row++)
-                {
-                    into[col, row] = from[col, row];
-                }
-            }
         }
 
         public void Initialize(int x, int y)
@@ -452,12 +442,12 @@ namespace Duality_.Model
             } // Next col
         }
 
-        public int? BestMove(int owner, int plies)
+        public int BestMove(int owner, int plies)
         {
             CreateColorOwnerStack(plies);
 
             // Init to an invaild move.
-            int? bestMove = -1;
+            int bestMove = -1;
             Negamax(plies, -mySizeX * mySizeY, mySizeX * mySizeY, owner, bestMove);
 
             DeleteColorOwnerStack(plies);
