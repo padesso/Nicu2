@@ -81,7 +81,7 @@ namespace Duality_.Model
             myOwnerStack.Clear();
         }
 
-        private float Negamax(int depth, float alpha, float beta, int owner, int bestMove )
+        private float Negamax(int depth, float alpha, float beta, int owner, ref int bestMove )
         {
             if (depth == 0 || (Score(0) + Score(1) == mySizeX * mySizeY))
             {
@@ -142,7 +142,7 @@ namespace Duality_.Model
                 FloodFill(owner, testColor);
 
                 // Determine its value
-                float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, currBestMove);
+                float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, ref currBestMove);
 
                 // Undo move
                 myColor = (int[,])origColor.Clone();
@@ -448,7 +448,7 @@ namespace Duality_.Model
 
             // Init to an invaild move.
             int bestMove = -1;
-            Negamax(plies, -mySizeX * mySizeY, mySizeX * mySizeY, owner, bestMove);
+            Negamax(plies, -mySizeX * mySizeY, mySizeX * mySizeY, owner, ref bestMove);
 
             DeleteColorOwnerStack(plies);
 
