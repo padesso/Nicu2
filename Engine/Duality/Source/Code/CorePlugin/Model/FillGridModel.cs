@@ -327,7 +327,7 @@ namespace Duality_.Model
                 }
             }
 
-            //FillTrapped(owner, color);
+            FillTrapped(owner, color);
         }
 
         private void FillTrapped(int owner, int color)
@@ -369,8 +369,8 @@ namespace Duality_.Model
                     while (searchStack.Count() > 0)
                     {
                         // Pop off the top of the stack.
-                        Point2 p = searchStack.Last();
-                        searchStack.Pop();
+                        Point2 p = searchStack.Pop();
+                        //searchStack.Pop();
 
                         if (visited[p.X, p.Y] == 1)
                             continue;
