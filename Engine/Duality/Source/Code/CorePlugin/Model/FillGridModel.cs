@@ -21,7 +21,7 @@ namespace Duality_.Model
         protected int[,] myColor;
         protected int[,] myOwner;
 
-        protected List<List<Point2>> playerTerritories; //Can't believe this shit works...
+        protected List<Stack<Point2>> playerTerritories; //Can't believe this shit works...
 
         public FillGridModel()
         {
@@ -30,9 +30,9 @@ namespace Duality_.Model
             myColor = null;
 
             //TODO: pass number of players and instantiate in a loop
-            playerTerritories = new List<List<Point2>>(2);
-            playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Player
-            playerTerritories.Add(new List<Point2>(mySizeX * mySizeY));    //Enemy
+            playerTerritories = new List<Stack<Point2>>(2);
+            playerTerritories.Add(new Stack<Point2>(mySizeX * mySizeY));    //Player
+            playerTerritories.Add(new Stack<Point2>(mySizeX * mySizeY));    //Enemy
         }
 
         public string DebugPrintColors()
@@ -105,7 +105,7 @@ namespace Duality_.Model
                         }
                         else
                         {
-                            locScore += -0.00001f;
+                            locScore *= -0.00001f;
                         }
                     }
                 }
@@ -127,9 +127,7 @@ namespace Duality_.Model
             AssignArray(ref origColor, ref myColor);
             AssignArray(ref origOwner, ref myOwner);
 
-            List<List<Point2>> origTerritory = new List<List<Point2>>(2);
-            origTerritory.Add(playerTerritories[0]);
-            origTerritory.Add(playerTerritories[1]);
+            List<Stack<Point2>> origTerritory = new List<Stack<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
 
             float currBestValue = -mySizeX * mySizeY;
             int? currBestMove = null; //TODO: this seems extraneous...
@@ -207,8 +205,8 @@ namespace Duality_.Model
             //TODO: handle multiplayer
             myOwner[0, 0] = 0;
             myOwner[mySizeX - 1, mySizeY - 1] = 1;
-            playerTerritories[0].Add(new Point2(0, 0));
-            playerTerritories[1].Add(new Point2(mySizeX - 1, mySizeY - 1));
+            playerTerritories[0].Push(new Point2(0, 0));
+            playerTerritories[1].Push(new Point2(mySizeX - 1, mySizeY - 1));
 
             // An easy way to expand the initial ownership so that
             // we get all of the matching adjacent colors.
@@ -267,7 +265,7 @@ namespace Duality_.Model
             int cTerritory = playerTerritories[owner].Count();
             for (int i = 0; i < cTerritory; i++)
             {
-                Point2 p = playerTerritories[owner][i];
+                Point2 p = playerTerritories[owner].ElementAt(i);
                 myColor[p.X, p.Y] = color;
             }
 
@@ -281,7 +279,7 @@ namespace Duality_.Model
             //    so that we can search beyond them.
             for (int i = 0; i < cTerritory; ++i)
             {
-                Point2 p = playerTerritories[owner][i];
+                Point2 p = playerTerritories[owner].ElementAt(i);
 
                 if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
                     posStack.Push(new Point2(p.X - 1, p.Y));
@@ -309,7 +307,7 @@ namespace Duality_.Model
                 // make sure that it's still unowned.
                 if (myColor[p.X, p.Y] == color && myOwner[p.X, p.Y] == -1)
                 {
-                    playerTerritories[owner].Add(p);
+                    playerTerritories[owner].Push(p);
                     myOwner[p.X, p.Y] = owner;
 
                     // Push adjacent tiles onto the stack
@@ -447,7 +445,7 @@ namespace Duality_.Model
                             Point2 p = trappedRegion.ElementAt(i);
                             myOwner[p.X, p.Y] = owner;
                             myColor[p.X, p.Y] = color;
-                            playerTerritories[owner].Add(p);
+                            playerTerritories[owner].Push(p);
                         }
                     }
                 } // Next row

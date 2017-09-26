@@ -42,8 +42,8 @@ namespace FloodFill
                 Random rand = new Random();
                 fillGrid.FloodFill(0, rand.Next(0, 5));
 
-                //int? bestMove = fillGrid.BestMove(1, 3);
-                //fillGrid.FloodFill(1, (int)bestMove);
+                int? bestMove = fillGrid.BestMove(1, 3);
+                fillGrid.FloodFill(1, (int)bestMove);
             }
             else
             {
