@@ -9,39 +9,43 @@ namespace Duality_.Model
 {
     public class FillGridModel
     {
-        private int sizeX;
-        private int sizeY;
+        private List<int[,]> boardColorList;
+        private List<int[,]> boardOwnerList;
 
-        private Stack<int[,]> myColorStack;
-        private Stack<int[,]> myOwnerStack;
+        protected int sizeX;
+        protected int sizeY;
 
-        protected int mySizeX;
-        protected int mySizeY;
+        protected int[,] boardColor;
+        protected int[,] boardOwner;
 
-        protected int[,] myColor;
-        protected int[,] myOwner;
+        protected List<Stack<Point2>> playerTerritories;
 
-        protected List<Stack<Point2>> playerTerritories; //Can't believe this shit works...
-
+        /// <summary>
+        /// Create an instance of the game board.
+        /// </summary>
         public FillGridModel()
         {
-            mySizeX = 0;
-            mySizeY = 0;
-            myColor = null;
+            sizeX = 0;
+            sizeY = 0;
+            boardColor = null;
 
             //TODO: pass number of players and instantiate in a loop
             playerTerritories = new List<Stack<Point2>>(2);
-            playerTerritories.Add(new Stack<Point2>(mySizeX * mySizeY));    //Player
-            playerTerritories.Add(new Stack<Point2>(mySizeX * mySizeY));    //Enemy
+            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Player
+            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Enemy
         }
 
+        /// <summary>
+        /// Returns the colors of the board as a string.
+        /// </summary>
+        /// <returns>The game board colors.</returns>
         public string DebugPrintColors()
         {
             string board = string.Empty;
 
-            for(int col = 0; col < mySizeX; col++)
+            for(int col = 0; col < sizeX; col++)
             {
-                for(int row = 0; row < mySizeY; row++)
+                for(int row = 0; row < sizeY; row++)
                 {
                     board += Color(col,row).ToString() + " ";
                 }
@@ -51,55 +55,51 @@ namespace Duality_.Model
             return board;
         }
         
+        /// <summary>
+        /// Release the memory of the board data structures.
+        /// </summary>
         private void Cleanup()
         {
-            if(myColor != null)
+            if(boardColor != null)
             {
-                myColor = null;  //TODO: verify this trashes all elements properly
+                boardColor = null; 
             }
 
-            if(myOwner != null)
+            if(boardOwner != null)
             {
-                myOwner = null;  //TODO: verify this trashes all elements properly
+                boardOwner = null;
             }
         }
-
-        private void CreateColorOwnerStack(int depth)
-        {
-            myColorStack = new Stack<int[,]>(depth);
-            myOwnerStack = new Stack<int[,]>(depth);
-            for(int i = 0; i < depth; i++)
-            {
-                myColorStack.Push(CreateArray());
-                myOwnerStack.Push(CreateArray());
-            }
-        }
-
-        private void DeleteColorOwnerStack(int depth)
-        {
-            myColorStack.Clear();
-            myOwnerStack.Clear();
-        }
-
+        
+        /// <summary>
+        /// Game AI routine.  Calls itself recursively to evaluate best move for given number of iterations (plies).
+        /// </summary>
+        /// <param name="depth">Number of plies to evaluate.</param>
+        /// <param name="alpha">Alpha pruning parameter.</param>
+        /// <param name="beta">Beta pruning parameter.</param>
+        /// <param name="owner">Which player to evaluate turn.</param>
+        /// <param name="bestMove">Reference to best color to select.</param>
+        /// <returns>A float that is evaluated to determine best move.</returns>
         private float Negamax(int depth, float alpha, float beta, int owner, ref int bestMove )
         {
-            if (depth == 0 || (Score(0) + Score(1) == mySizeX * mySizeY))
+            //This checks for end game or end of AI evaluation
+            if (depth == 0 || (Score(0) + Score(1) == sizeX * sizeY))
             {
                 // Evaluation of the game at this point:
                 float evaluation = Score(0) - Score(1) - depth * 0.001f;
                 float locScore = 0;
 
-                for (int col = 0; col < mySizeX; col++)
+                for (int col = 0; col < sizeX; col++)
                 {
-                    for (int row = 0; row < mySizeY; row++)
+                    for (int row = 0; row < sizeY; row++)
                     {
-                        if (myOwner[col, row] == -1)
+                        if (boardOwner[col, row] == -1)
                             continue;
 
-                        locScore += col > mySizeX / 2 ? mySizeX - col : col;
-                        locScore += row > mySizeY / 2 ? mySizeY - row : row;
+                        locScore += col > sizeX / 2 ? sizeX - col : col;
+                        locScore += row > sizeY / 2 ? sizeY - row : row;
 
-                        if (myOwner[col, row] == 0)
+                        if (boardOwner[col, row] == 0)
                         {
                             locScore *= 0.00001f;
                         }
@@ -122,16 +122,21 @@ namespace Duality_.Model
             }
 
             // Make copies of the current arrays and territories so we can restore them.
-            int[,] origColor = myColorStack.ElementAt(depth - 1);
-            int[,] origOwner = myOwnerStack.ElementAt(depth - 1);
+            //int[,] origColor = boardColorList.ElementAt(depth - 1);
+            //int[,] origOwner = boardOwnerList.ElementAt(depth - 1);
 
-            origColor = (int[,])myColor.Clone();
-            origOwner = (int[,])myOwner.Clone();
+            //The ref uses a pointer and thus stores info in the color/owner lists... 
+            boardColorList[depth - 1] = boardColor;
+            boardOwnerList[depth - 1] = boardOwner;
 
+            //origColor = (int[,])boardColor.Clone();
+            //origOwner = (int[,])boardOwner.Clone();
+
+            //Do we need to clone this?
             List<Stack<Point2>> origTerritory = new List<Stack<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
 
-            float currBestValue = -mySizeX * mySizeY;
-            int currBestMove = 0; //TODO: this seems extraneous...
+            float currBestValue = -sizeX * sizeY;
+            int currBestMove = -1; 
 
             for (int testColor = 0; testColor <= 5; testColor++)
             {
@@ -145,8 +150,8 @@ namespace Duality_.Model
                 float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, ref currBestMove);
 
                 // Undo move
-                myColor = (int[,])origColor.Clone();
-                myOwner = (int[,])origOwner.Clone();
+                boardColor = boardColorList[depth - 1]; // (int[,])origColor.Clone();
+                boardOwner = boardOwnerList[depth - 1]; //(int[,])origOwner.Clone();
                 playerTerritories[0] = origTerritory[0];
                 playerTerritories[1] = origTerritory[1];
 
@@ -167,96 +172,137 @@ namespace Duality_.Model
             return currBestValue;
         }
 
+        /// <summary>
+        /// Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
+        /// </summary>
+        /// <param name="x">Number of columns.</param>
+        /// <param name="y">Number of rows.</param>
         public void Initialize(int x, int y)
         {
             // In case we were already initialized, clean up the old stuff.
             Cleanup();
 
-            mySizeX = x;
-            mySizeY = y;
+            sizeX = x;
+            sizeY = y;
 
             // Create an array for colors.
-            myColor = CreateArray();
+            boardColor = CreateArray();
 
             Random rand = new Random(DateTime.Now.Millisecond);
 
             // Assign random colors to the array.
-            for (int col = 0; col < mySizeX; ++col)
-                for (int row = 0; row < mySizeY; ++row)
-                    myColor[col, row] =  rand.Next(0, 5);
+            for (int col = 0; col < sizeX; ++col)
+                for (int row = 0; row < sizeY; ++row)
+                    boardColor[col, row] =  rand.Next(0, 5);
 
             // Create an array for owners.
-            myOwner = CreateArray();
+            boardOwner = CreateArray();
 
             // Assign "-1" to all owners to show a lack of ownership.
-            myOwner = InitArray(-1);
+            boardOwner = InitArray(-1);
 
             // Give the player's their starting ownership
             //TODO: handle multiplayer
-            myOwner[0, 0] = 0;
-            myOwner[mySizeX - 1, mySizeY - 1] = 1;
+            boardOwner[0, 0] = 0;
+            boardOwner[sizeX - 1, sizeY - 1] = 1;
             playerTerritories[0].Push(new Point2(0, 0));
-            playerTerritories[1].Push(new Point2(mySizeX - 1, mySizeY - 1));
+            playerTerritories[1].Push(new Point2(sizeX - 1, sizeY - 1));
 
             // An easy way to expand the initial ownership so that
             // we get all of the matching adjacent colors.
-            FloodFill(0, myColor[0, 0]);
-            FloodFill(1, myColor[mySizeX - 1, mySizeY - 1]);
+            FloodFill(0, boardColor[0, 0]);
+            FloodFill(1, boardColor[sizeX - 1, sizeY - 1]);
         }
 
+        /// <summary>
+        /// Create an empty two dimensional array.
+        /// </summary>
+        /// <returns>An empty two dimensional integer array.</returns>
         protected int[,] CreateArray()
         {
-            return new int[mySizeX, mySizeY];
+            return new int[sizeX, sizeY];
         }
 
+        /// <summary>
+        /// Seeds an array with an initial value.
+        /// </summary>
+        /// <param name="value">Initial value to seed array with.</param>
+        /// <returns>Seeded two dimensional integer array.</returns>
         protected int[,] InitArray(int value)
         {
-            int[,] a = new int[mySizeX,mySizeY];
+            int[,] a = new int[sizeX,sizeY];
 
-            for(int col = 0; col < mySizeX; ++col )
-                for (int row = 0; row < mySizeY; ++row)
+            for(int col = 0; col < sizeX; ++col )
+                for (int row = 0; row < sizeY; ++row)
                     a[col,row] = value;
 
             return a;
         }
 
+        /// <summary>
+        /// Get the color assigned to a tile of given coordinates.
+        /// </summary>
+        /// <param name="x">Column to evaluate.</param>
+        /// <param name="y">Row to evaluate.</param>
+        /// <returns>Color of tile for given coordinates.  -1 for invalid tile.</returns>
         public int Color(int x, int y)
         {
-            if (x < 0 || x > mySizeX || y < 0 || y > mySizeY)
+            if (x < 0 || x > sizeX || y < 0 || y > sizeY)
                 return -1;
 
-            return myColor[x, y];
+            return boardColor[x, y];
         }
 
+        /// <summary>
+        /// Get the owner assigned to a tile of given coordinates.
+        /// </summary>
+        /// <param name="x">Column to evaluate.</param>
+        /// <param name="y">Row to evaluate.</param>
+        /// <returns>Player ID for tile at given coordinates.  -1 for invalid tile. </returns>
         public int Owner(int x, int y)
         {
-            if (x < 0 || x > mySizeX || y < 0 || y > mySizeY)
+            if (x < 0 || x > sizeX || y < 0 || y > sizeY)
                 return -1;
 
-            return myOwner[x, y];
+            return boardOwner[x, y];
         }
 
+        /// <summary>
+        /// Get the last selected color by looking at the color of the origin tile.
+        /// </summary>
+        /// <param name="owner">Which player we are fetching the last selected color for.</param>
+        /// <returns></returns>
         public int LastSelectedColor(int owner)
         {
             if (owner == 0)
-                return myColor[0, 0];
+                return boardColor[0, 0];
 
-            return myColor[mySizeX - 1, mySizeY - 1];
+            return boardColor[sizeX - 1, sizeY - 1];
         }
 
+        /// <summary>
+        /// Score is the number of tiles a player owns.
+        /// </summary>
+        /// <param name="owner">Which player we want to score.</param>
+        /// <returns></returns>
         public int Score(int owner)
         {
             return playerTerritories[owner].Count();
         }
 
+        /// <summary>
+        /// Exapnad the player territoriy into all adjacent tiles that match the selected color.
+        /// </summary>
+        /// <param name="owner">Which player to flood fill.</param>
+        /// <param name="color">Which color to expand the player territory to.</param>
         public void FloodFill(int owner, int color)
         {
             // Change all of our current territory to the new color.
-            int cTerritory = playerTerritories[owner].Count();
-            for (int i = 0; i < cTerritory; i++)
+            int territoryCount = playerTerritories[owner].Count();
+            for (int i = 0; i < territoryCount; i++)
             {
                 Point2 p = playerTerritories[owner].ElementAt(i);
-                myColor[p.X, p.Y] = color;
+                boardColor[p.X, p.Y] = color;
             }
 
             // Create the position stack
@@ -267,20 +313,20 @@ namespace Duality_.Model
             // If those tiles are unowned,
             //    we'll take ownership and put them on a stack
             //    so that we can search beyond them.
-            for (int i = 0; i < cTerritory; ++i)
+            for (int i = 0; i < territoryCount; ++i)
             {
                 Point2 p = playerTerritories[owner].ElementAt(i);
 
-                if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
+                if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
                     posStack.Push(new Point2(p.X - 1, p.Y));
 
-                if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
+                if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
                     posStack.Push(new Point2(p.X + 1, p.Y));
 
-                if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
+                if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
                     posStack.Push(new Point2(p.X, p.Y - 1));
 
-                if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
+                if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
                     posStack.Push(new Point2(p.X, p.Y + 1));
             }
 
@@ -295,22 +341,22 @@ namespace Duality_.Model
                 // by anybody.  We can safely claim it if matches our current color.
                 // Note: This algorithm may have already switched the owner, so we
                 // make sure that it's still unowned.
-                if (myColor[p.X, p.Y] == color && myOwner[p.X, p.Y] == -1)
+                if (boardColor[p.X, p.Y] == color && boardOwner[p.X, p.Y] == -1)
                 {
                     playerTerritories[owner].Push(p);
-                    myOwner[p.X, p.Y] = owner;
+                    boardOwner[p.X, p.Y] = owner;
 
                     // Push adjacent tiles onto the stack
-                    if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
+                    if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
                         posStack.Push(new Point2(p.X - 1, p.Y));
 
-                    if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
+                    if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
                         posStack.Push(new Point2(p.X + 1, p.Y));
 
-                    if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
+                    if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
                         posStack.Push(new Point2(p.X, p.Y - 1));
 
-                    if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
+                    if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
                         posStack.Push(new Point2(p.X, p.Y + 1));
                 }
             }
@@ -318,6 +364,11 @@ namespace Duality_.Model
             FillTrapped(owner, color);
         }
 
+        /// <summary>
+        /// Determine if tiles are completely surrounded by a player territory and fill them in, if so.
+        /// </summary>
+        /// <param name="owner">Which player is evaluating trapped tiles.</param>
+        /// <param name="color">What color the trapped tiles should be set to.</param>
         private void FillTrapped(int owner, int color)
         {
             // I'm pre-sizing these vectors so that they don't have to
@@ -334,12 +385,12 @@ namespace Duality_.Model
             int[,] visited = InitArray(0); //init to 0 (false)
 
             // Iterate over the entire array
-            for (int col = 0; col < mySizeX; ++col)
+            for (int col = 0; col < sizeX; ++col)
             {
-                for (int row = 0; row < mySizeY; ++row)
+                for (int row = 0; row < sizeY; ++row)
                 {
                     // Skip the tile if it's owned by somebody.
-                    if (myOwner[col,row] != -1)
+                    if (boardOwner[col,row] != -1)
                         continue;
 
                     // Skip the tile if we've already looked at it.
@@ -373,16 +424,16 @@ namespace Duality_.Model
                         // Note: we never push a tile onto the stack if it
                         // belong to somebody, so we don't need to check
                         // for that in this depth-first search.
-                        if (p.X > 0 && myOwner[p.X - 1, p.Y] == -1)
+                        if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
                             searchStack.Push(new Point2(p.X - 1, p.Y));
 
-                        if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] == -1)
+                        if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
                             searchStack.Push(new Point2(p.X + 1, p.Y));
 
-                        if (p.Y > 0 && myOwner[p.X, p.Y - 1] == -1)
+                        if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
                             searchStack.Push(new Point2(p.X, p.Y - 1));
 
-                        if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] == -1)
+                        if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
                             searchStack.Push(new Point2(p.X, p.Y + 1));
                     }
 
@@ -409,19 +460,19 @@ namespace Duality_.Model
                     for (int i = 0; i < regionSize && isATrappedRegion; ++i)
                     {
                         Point2 p = trappedRegion.ElementAt(i);
-                        if (p.X > 0 && myOwner[p.X - 1, p.Y] != -1 && myOwner[p.X - 1, p.Y] != owner)
+                        if (p.X > 0 && boardOwner[p.X - 1, p.Y] != -1 && boardOwner[p.X - 1, p.Y] != owner)
                         {
                             isATrappedRegion = false;
                         }
-                        if (p.X < mySizeX - 1 && myOwner[p.X + 1, p.Y] != -1 && myOwner[p.X + 1, p.Y] != owner)
+                        if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] != -1 && boardOwner[p.X + 1, p.Y] != owner)
                         {
                             isATrappedRegion = false;
                         }
-                        if (p.Y > 0 && myOwner[p.X, p.Y - 1] != -1 && myOwner[p.X, p.Y - 1] != owner)
+                        if (p.Y > 0 && boardOwner[p.X, p.Y - 1] != -1 && boardOwner[p.X, p.Y - 1] != owner)
                         {
                             isATrappedRegion = false;
                         }
-                        if (p.Y < mySizeY - 1 && myOwner[p.X, p.Y + 1] != -1 && myOwner[p.X, p.Y + 1] != owner)
+                        if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] != -1 && boardOwner[p.X, p.Y + 1] != owner)
                         {
                             isATrappedRegion = false;
                         }
@@ -433,8 +484,8 @@ namespace Duality_.Model
                         for (int i = 0; i < regionSize; ++i)
                         {
                             Point2 p = trappedRegion.ElementAt(i);
-                            myOwner[p.X, p.Y] = owner;
-                            myColor[p.X, p.Y] = color;
+                            boardOwner[p.X, p.Y] = owner;
+                            boardColor[p.X, p.Y] = color;
                             playerTerritories[owner].Push(p);
                         }
                     }
@@ -442,19 +493,49 @@ namespace Duality_.Model
             } // Next col
         }
 
+        /// <summary>
+        /// Get the best move for the selected player for a given number of AI iterations.
+        /// </summary>
+        /// <param name="owner">Which player to find the best move for.</param>
+        /// <param name="plies">Number of iterations the AI will evaluate.</param>
+        /// <returns></returns>
         public int BestMove(int owner, int plies)
         {
-            CreateColorOwnerStack(plies);
+            CreateBoardColorOwnerLists(plies);
 
             // Init to an invaild move.
             int bestMove = -1;
-            Negamax(plies, -mySizeX * mySizeY, mySizeX * mySizeY, owner, ref bestMove);
+            Negamax(plies, -sizeX * sizeY, sizeX * sizeY, owner, ref bestMove);
 
-            DeleteColorOwnerStack(plies);
+            DeleteBoardColorOwnerLists(plies);
 
             return bestMove;
         }
 
+        /// <summary>
+        /// Create temporary boards to evaluate by AI.
+        /// </summary>
+        /// <param name="depth">Number of temporary boards to be created.</param>
+        private void CreateBoardColorOwnerLists(int depth)
+        {
+            boardColorList = new List<int[,]>(depth);
+            boardOwnerList = new List<int[,]>(depth);
+            for (int i = 0; i < depth; i++)
+            {
+                boardColorList.Add(CreateArray());
+                boardOwnerList.Add(CreateArray());
+            }
+        }
+
+        private void DeleteBoardColorOwnerLists(int depth)
+        {
+            boardColorList.Clear();
+            boardOwnerList.Clear();
+        }
+
+        /// <summary>
+        /// Number of columns in the grid.
+        /// </summary>
         public int SizeX
         {
             get
@@ -468,6 +549,9 @@ namespace Duality_.Model
             }
         }
 
+        /// <summary>
+        /// Number of rows in the grid.
+        /// </summary>
         public int SizeY
         {
             get

@@ -9,6 +9,58 @@
             Defines a Duality core plugin.
             </summary>
         </member>
+        <member name="M:Duality_.Model.FillGridModel.LastSelectedColor(System.Int32)">
+            <summary>
+            Get the last selected color by looking at the color of the origin tile.
+            </summary>
+            <param name="owner">Which player we are fetching the last selected color for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Score(System.Int32)">
+            <summary>
+            Score is the number of tiles a player owns.
+            </summary>
+            <param name="owner">Which player we want to score.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.FloodFill(System.Int32,System.Int32)">
+            <summary>
+            Exapnad the player territoriy into all adjacent tiles that match the selected color.
+            </summary>
+            <param name="owner">Which player to flood fill.</param>
+            <param name="color">Which color to expand the player territory to.</param>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.FillTrapped(System.Int32,System.Int32)">
+            <summary>
+            Determine if tiles are completely surrounded by a player territory and fill them in, if so.
+            </summary>
+            <param name="owner">Which player is evaluating trapped tiles.</param>
+            <param name="color">What color the trapped tiles should be set to.</param>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.BestMove(System.Int32,System.Int32)">
+            <summary>
+            Get the best move for the selected player for a given number of AI iterations.
+            </summary>
+            <param name="owner">Which player to find the best move for.</param>
+            <param name="plies">Number of iterations the AI will evaluate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.CreateBoardColorOwnerLists(System.Int32)">
+            <summary>
+            Create temporary boards to evaluate by AI.
+            </summary>
+            <param name="depth">Number of temporary boards to be created.</param>
+        </member>
+        <member name="P:Duality_.Model.FillGridModel.SizeX">
+            <summary>
+            Number of columns in the grid.
+            </summary>
+        </member>
+        <member name="P:Duality_.Model.FillGridModel.SizeY">
+            <summary>
+            Number of rows in the grid.
+            </summary>
+        </member>
         <member name="M:Duality_.Model.FillGridModel.Finalize">
             <summary>
             Destructor

@@ -18,8 +18,6 @@ namespace FloodFill
             {
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
-
-                int i = 1;
             }
         }
 
@@ -39,11 +37,13 @@ namespace FloodFill
                 debugTickCount = 0;
 
                 //Random first player
-                Random rand = new Random();
-                fillGrid.FloodFill(0, rand.Next(0, 5));
+                //Random rand = new Random();
+                //fillGrid.FloodFill(0, rand.Next(0, 5));
+                //fillGrid.FloodFill(1, rand.Next(0, 5));
 
                 int bestMove = fillGrid.BestMove(1, 3);
-                fillGrid.FloodFill(1, bestMove);
+                Debug.WriteLine("Best move for player 1: " + bestMove.ToString());
+                //fillGrid.FloodFill(1, bestMove);
             }
             else
             {
