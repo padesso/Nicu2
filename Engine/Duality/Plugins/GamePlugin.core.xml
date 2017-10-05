@@ -9,6 +9,69 @@
             Defines a Duality core plugin.
             </summary>
         </member>
+        <member name="M:Duality_.Model.FillGridModel.#ctor">
+            <summary>
+            Create an instance of the game board.
+            </summary>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.DebugPrintColors">
+            <summary>
+            Returns the colors of the board as a string.
+            </summary>
+            <returns>The game board colors.</returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Cleanup">
+            <summary>
+            Release the memory of the board data structures.
+            </summary>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Negamax(System.Int32,System.Single,System.Single,System.Int32,System.Int32@)">
+            <summary>
+            Game AI routine.  Calls itself recursively to evaluate best move for given number of iterations (plies).
+            </summary>
+            <param name="depth">Number of plies to evaluate.</param>
+            <param name="alpha">Alpha pruning parameter.</param>
+            <param name="beta">Beta pruning parameter.</param>
+            <param name="owner">Which player to evaluate turn.</param>
+            <param name="bestMove">Reference to best color to select.</param>
+            <returns>A float that is evaluated to determine best move.</returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Initialize(System.Int32,System.Int32)">
+            <summary>
+            Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
+            </summary>
+            <param name="x">Number of columns.</param>
+            <param name="y">Number of rows.</param>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.CreateArray">
+            <summary>
+            Create an empty two dimensional array.
+            </summary>
+            <returns>An empty two dimensional integer array.</returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.InitArray(System.Int32)">
+            <summary>
+            Seeds an array with an initial value.
+            </summary>
+            <param name="value">Initial value to seed array with.</param>
+            <returns>Seeded two dimensional integer array.</returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Color(System.Int32,System.Int32)">
+            <summary>
+            Get the color assigned to a tile of given coordinates.
+            </summary>
+            <param name="x">Column to evaluate.</param>
+            <param name="y">Row to evaluate.</param>
+            <returns>Color of tile for given coordinates.  -1 for invalid tile.</returns>
+        </member>
+        <member name="M:Duality_.Model.FillGridModel.Owner(System.Int32,System.Int32)">
+            <summary>
+            Get the owner assigned to a tile of given coordinates.
+            </summary>
+            <param name="x">Column to evaluate.</param>
+            <param name="y">Row to evaluate.</param>
+            <returns>Player ID for tile at given coordinates.  -1 for invalid tile. </returns>
+        </member>
         <member name="M:Duality_.Model.FillGridModel.LastSelectedColor(System.Int32)">
             <summary>
             Get the last selected color by looking at the color of the origin tile.

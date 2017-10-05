@@ -79,15 +79,14 @@
 [Core] Msg: Initializing IAudioBackend...
 [Core] Msg:   OpenAL (OpenTK)...
 [Core] Msg:     OpenAL Drivers not found. Using 64 Bit software fallback.
-[Core] Msg:     Assembly loaded: System.Configuration 4.0.0.0
 [Core] Msg:     Available devices:
-[Core] ERR:     Failed: DllNotFoundException: openal32.dll
-                CallStack:
-                   at OpenTK.Audio.AudioContext.CreateContext(String device, Int32 freq, Int32 refresh, Boolean sync, Boolean enableEfx, MaxAuxiliarySends efxAuxiliarySends) in c:\Stuff\svn\Projects\AdamsLair.OpenTK\Source\OpenTK\Audio\AudioContext.cs:line 258
-                   at OpenTK.Audio.AudioContext..ctor() in c:\Stuff\svn\Projects\AdamsLair.OpenTK\Source\OpenTK\Audio\AudioContext.cs:line 78
-                   at Duality.Backend.DefaultOpenTK.AudioBackend.Duality.Backend.IDualityBackend.Init() in c:\projects\duality\Source\Platform\DefaultOpenTK\Backend\Audio\AudioBackend.cs:line 80
-                   at Duality.DualityApp.InitBackend[T](T& target, Func`2 typeFinder) in c:\projects\duality\Source\Core\Duality\DualityApp.cs:line 806
-[Core] Msg:   No Audio...
+                  Speakers (Realtek High Definition Audio(SST)) (Default)
+[Core] Msg:     Current device: OpenAL Soft
+[Core] Msg:     OpenAL Version: 1.1 ALSOFT 1.15.1
+                Vendor: OpenAL Community
+                Renderer: OpenAL Soft
+                Effects: True
+[Core] Msg:     256 sources available
 [Core] Msg: Initializing core plugins...
 [Core] Msg:   Compatibility.core...
 [Core] Msg:   DefaultOpenTKBackend.core...
@@ -125,4 +124,5 @@
 [Core] Msg:   ...done!
 [Core] Msg: Assembly loaded: FarseerDuality 4.1.4.0
 [Core] Msg: Loading Resource 'Data\Scene.Scene.res'
+[Core] Msg: Assembly loaded: System.Configuration 4.0.0.0
 [Core] Msg: Determining OpenGL context capabilities...

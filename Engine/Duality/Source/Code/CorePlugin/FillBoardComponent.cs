@@ -18,6 +18,8 @@ namespace FloodFill
             {
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
+
+                
             }
         }
 
@@ -43,7 +45,7 @@ namespace FloodFill
 
                 int bestMove = fillGrid.BestMove(1, 3);
                 Debug.WriteLine("Best move for player 1: " + bestMove.ToString());
-                //fillGrid.FloodFill(1, bestMove);
+                fillGrid.FloodFill(1, bestMove);
             }
             else
             {

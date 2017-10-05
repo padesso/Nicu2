@@ -82,6 +82,9 @@ namespace Duality_.Model
         /// <returns>A float that is evaluated to determine best move.</returns>
         private float Negamax(int depth, float alpha, float beta, int owner, ref int bestMove )
         {
+            //On first time returning, ownership has been completely filled by player 0...  This explains why 
+            //colors are filling in also...
+
             //This checks for end game or end of AI evaluation
             if (depth == 0 || (Score(0) + Score(1) == sizeX * sizeY))
             {
@@ -89,6 +92,7 @@ namespace Duality_.Model
                 float evaluation = Score(0) - Score(1) - depth * 0.001f;
                 float locScore = 0;
 
+                //Loop through all tiles and score all owned tiles.  
                 for (int col = 0; col < sizeX; col++)
                 {
                     for (int row = 0; row < sizeY; row++)
@@ -99,6 +103,7 @@ namespace Duality_.Model
                         locScore += col > sizeX / 2 ? sizeX - col : col;
                         locScore += row > sizeY / 2 ? sizeY - row : row;
 
+                        //Bad score (positive) for owner 0, good for AI
                         if (boardOwner[col, row] == 0)
                         {
                             locScore *= 0.00001f;
@@ -111,6 +116,7 @@ namespace Duality_.Model
                 }
                 evaluation += locScore;
 
+                //Flip score for AI so we can run this for both players
                 if (owner == 0)
                 {
                     return evaluation;
@@ -122,22 +128,18 @@ namespace Duality_.Model
             }
 
             // Make copies of the current arrays and territories so we can restore them.
-            //int[,] origColor = boardColorList.ElementAt(depth - 1);
-            //int[,] origOwner = boardOwnerList.ElementAt(depth - 1);
+            boardColorList[depth - 1] = (int[,])boardColor.Clone();
+            boardOwnerList[depth - 1] = (int[,])boardOwner;
 
-            //The ref uses a pointer and thus stores info in the color/owner lists... 
-            boardColorList[depth - 1] = boardColor;
-            boardOwnerList[depth - 1] = boardOwner;
+            int[,] origColor = boardColorList[depth - 1];
+            int[,] origOwner = boardOwnerList[depth - 1];
 
-            //origColor = (int[,])boardColor.Clone();
-            //origOwner = (int[,])boardOwner.Clone();
-
-            //Do we need to clone this?
             List<Stack<Point2>> origTerritory = new List<Stack<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
 
             float currBestValue = -sizeX * sizeY;
             int currBestMove = -1; 
 
+            //Test score for all colors (depth first since it calls recursively)
             for (int testColor = 0; testColor <= 5; testColor++)
             {
                 if (LastSelectedColor(owner) == testColor)
@@ -146,12 +148,12 @@ namespace Duality_.Model
                 // Apply move
                 FloodFill(owner, testColor);
 
-                // Determine its value
+                // Determine its value for this color
                 float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, ref currBestMove);
 
                 // Undo move
-                boardColor = boardColorList[depth - 1]; // (int[,])origColor.Clone();
-                boardOwner = boardOwnerList[depth - 1]; //(int[,])origOwner.Clone();
+                boardColor = (int[,])origColor.Clone(); // boardColorList[depth - 1];
+                boardOwner = (int[,])origOwner.Clone(); // boardOwnerList[depth - 1];
                 playerTerritories[0] = origTerritory[0];
                 playerTerritories[1] = origTerritory[1];
 
@@ -196,7 +198,7 @@ namespace Duality_.Model
                     boardColor[col, row] =  rand.Next(0, 5);
 
             // Create an array for owners.
-            boardOwner = CreateArray();
+            //boardOwner = CreateArray();
 
             // Assign "-1" to all owners to show a lack of ownership.
             boardOwner = InitArray(-1);
@@ -364,6 +366,79 @@ namespace Duality_.Model
             FillTrapped(owner, color);
         }
 
+        //TEST
+        private Tuple<int[,],int[,],Stack<Point2>> FloodFill(int[,] boardColor, int[,] boardOwner, Stack<Point2> playerTerritory, int owner, int color)
+        {
+            // Change all of our current territory to the new color.
+            int territoryCount = playerTerritory.Count();
+            for (int i = 0; i < territoryCount; i++)
+            {
+                Point2 p = playerTerritory.ElementAt(i);
+                boardColor[p.X, p.Y] = color;
+            }
+
+            // Create the position stack
+            //Vector<Point2I> posStack(30);
+            Stack<Point2> posStack = new Stack<Point2>(30);
+
+            // For every tile we own, we'll look at the adjacent tiles.
+            // If those tiles are unowned,
+            //    we'll take ownership and put them on a stack
+            //    so that we can search beyond them.
+            for (int i = 0; i < territoryCount; ++i)
+            {
+                Point2 p = playerTerritory.ElementAt(i);
+
+                if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
+                    posStack.Push(new Point2(p.X - 1, p.Y));
+
+                if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
+                    posStack.Push(new Point2(p.X + 1, p.Y));
+
+                if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
+                    posStack.Push(new Point2(p.X, p.Y - 1));
+
+                if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
+                    posStack.Push(new Point2(p.X, p.Y + 1));
+            }
+
+            // Switch owners
+            while (posStack.Count() > 0)
+            {
+                // Pop off the top item.
+                //Point2 p = posStack.First();
+                Point2 p = posStack.Pop();
+
+                // A tile can only be on the stack at this point if it wasn't owned
+                // by anybody.  We can safely claim it if matches our current color.
+                // Note: This algorithm may have already switched the owner, so we
+                // make sure that it's still unowned.
+                if (boardColor[p.X, p.Y] == color && boardOwner[p.X, p.Y] == -1)
+                {
+                    playerTerritory.Push(p);
+                    boardOwner[p.X, p.Y] = owner;
+
+                    // Push adjacent tiles onto the stack
+                    if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
+                        posStack.Push(new Point2(p.X - 1, p.Y));
+
+                    if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
+                        posStack.Push(new Point2(p.X + 1, p.Y));
+
+                    if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
+                        posStack.Push(new Point2(p.X, p.Y - 1));
+
+                    if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
+                        posStack.Push(new Point2(p.X, p.Y + 1));
+                }
+            }
+
+            //TODO:
+            //FillTrapped(owner, color);
+
+            return new Tuple<int[,], int[,], Stack<Point2>>(boardColor, boardOwner, playerTerritory);
+        }
+
         /// <summary>
         /// Determine if tiles are completely surrounded by a player territory and fill them in, if so.
         /// </summary>
@@ -522,8 +597,8 @@ namespace Duality_.Model
             boardOwnerList = new List<int[,]>(depth);
             for (int i = 0; i < depth; i++)
             {
-                boardColorList.Add(CreateArray());
-                boardOwnerList.Add(CreateArray());
+                boardColorList.Add(InitArray(-1));
+                boardOwnerList.Add(InitArray(-1));
             }
         }
 
