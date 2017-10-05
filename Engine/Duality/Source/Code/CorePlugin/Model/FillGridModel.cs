@@ -152,10 +152,10 @@ namespace Duality_.Model
                 float val = -Negamax(depth - 1, -beta, -alpha, 1 - owner, ref currBestMove);
 
                 // Undo move
-                boardColor = (int[,])origColor.Clone(); // boardColorList[depth - 1];
-                boardOwner = (int[,])origOwner.Clone(); // boardOwnerList[depth - 1];
-                playerTerritories[0] = origTerritory[0];
-                playerTerritories[1] = origTerritory[1];
+                boardColor = (int[,])origColor.Clone();
+                boardOwner = (int[,])origOwner.Clone();
+                playerTerritories[0] = new Stack<Point2>(origTerritory[0]);
+                playerTerritories[1] = new Stack<Point2>(origTerritory[1]);
 
                 // If the move beats our current best option, set it.
                 if (val > currBestValue)
@@ -364,79 +364,6 @@ namespace Duality_.Model
             }
 
             FillTrapped(owner, color);
-        }
-
-        //TEST
-        private Tuple<int[,],int[,],Stack<Point2>> FloodFill(int[,] boardColor, int[,] boardOwner, Stack<Point2> playerTerritory, int owner, int color)
-        {
-            // Change all of our current territory to the new color.
-            int territoryCount = playerTerritory.Count();
-            for (int i = 0; i < territoryCount; i++)
-            {
-                Point2 p = playerTerritory.ElementAt(i);
-                boardColor[p.X, p.Y] = color;
-            }
-
-            // Create the position stack
-            //Vector<Point2I> posStack(30);
-            Stack<Point2> posStack = new Stack<Point2>(30);
-
-            // For every tile we own, we'll look at the adjacent tiles.
-            // If those tiles are unowned,
-            //    we'll take ownership and put them on a stack
-            //    so that we can search beyond them.
-            for (int i = 0; i < territoryCount; ++i)
-            {
-                Point2 p = playerTerritory.ElementAt(i);
-
-                if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
-                    posStack.Push(new Point2(p.X - 1, p.Y));
-
-                if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
-                    posStack.Push(new Point2(p.X + 1, p.Y));
-
-                if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
-                    posStack.Push(new Point2(p.X, p.Y - 1));
-
-                if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
-                    posStack.Push(new Point2(p.X, p.Y + 1));
-            }
-
-            // Switch owners
-            while (posStack.Count() > 0)
-            {
-                // Pop off the top item.
-                //Point2 p = posStack.First();
-                Point2 p = posStack.Pop();
-
-                // A tile can only be on the stack at this point if it wasn't owned
-                // by anybody.  We can safely claim it if matches our current color.
-                // Note: This algorithm may have already switched the owner, so we
-                // make sure that it's still unowned.
-                if (boardColor[p.X, p.Y] == color && boardOwner[p.X, p.Y] == -1)
-                {
-                    playerTerritory.Push(p);
-                    boardOwner[p.X, p.Y] = owner;
-
-                    // Push adjacent tiles onto the stack
-                    if (p.X > 0 && boardOwner[p.X - 1, p.Y] == -1)
-                        posStack.Push(new Point2(p.X - 1, p.Y));
-
-                    if (p.X < sizeX - 1 && boardOwner[p.X + 1, p.Y] == -1)
-                        posStack.Push(new Point2(p.X + 1, p.Y));
-
-                    if (p.Y > 0 && boardOwner[p.X, p.Y - 1] == -1)
-                        posStack.Push(new Point2(p.X, p.Y - 1));
-
-                    if (p.Y < sizeY - 1 && boardOwner[p.X, p.Y + 1] == -1)
-                        posStack.Push(new Point2(p.X, p.Y + 1));
-                }
-            }
-
-            //TODO:
-            //FillTrapped(owner, color);
-
-            return new Tuple<int[,], int[,], Stack<Point2>>(boardColor, boardOwner, playerTerritory);
         }
 
         /// <summary>
