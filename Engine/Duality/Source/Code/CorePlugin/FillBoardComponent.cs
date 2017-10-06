@@ -11,6 +11,7 @@ namespace FloodFill
     public class FillBoardComponent : Component, ICmpInitializable, ICmpUpdatable
     {
         FillGridModel fillGrid;
+        int currentPlayer = 0;
 
         public void OnInit(InitContext context)
         {
@@ -19,7 +20,13 @@ namespace FloodFill
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
 
-                
+                int numPlies = 6;
+                Stopwatch clock = new Stopwatch();
+                clock.Start();
+                int bestMove = fillGrid.BestMove(currentPlayer, numPlies);
+                clock.Stop();
+                long runTime = clock.ElapsedMilliseconds;
+                Debug.WriteLine("Negamax with " + numPlies + " plies: " + runTime.ToString() + " ms.");
             }
         }
 
@@ -28,8 +35,8 @@ namespace FloodFill
             fillGrid = null;
         }
 
-        int debugTickDelay = 1000;
-        int debugTickCount = 1000;
+        int debugTickDelay = 100;
+        int debugTickCount = 100;
 
         public void OnUpdate()
         {
@@ -39,13 +46,12 @@ namespace FloodFill
                 debugTickCount = 0;
 
                 //Random first player
-                //Random rand = new Random();
-                //fillGrid.FloodFill(0, rand.Next(0, 5));
-                //fillGrid.FloodFill(1, rand.Next(0, 5));
+                Random rand = new Random();
+                
+                int bestMove = fillGrid.BestMove(currentPlayer, 3);               
+                fillGrid.FloodFill(currentPlayer, bestMove);
 
-                int bestMove = fillGrid.BestMove(1, 3);
-                Debug.WriteLine("Best move for player 1: " + bestMove.ToString());
-                fillGrid.FloodFill(1, bestMove);
+                currentPlayer = currentPlayer == 1 ? 0 : 1;
             }
             else
             {

@@ -129,7 +129,7 @@ namespace Duality_.Model
 
             // Make copies of the current arrays and territories so we can restore them.
             boardColorList[depth - 1] = (int[,])boardColor.Clone();
-            boardOwnerList[depth - 1] = (int[,])boardOwner;
+            boardOwnerList[depth - 1] = (int[,])boardOwner.Clone();
 
             int[,] origColor = boardColorList[depth - 1];
             int[,] origOwner = boardOwnerList[depth - 1];
