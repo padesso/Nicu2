@@ -29,10 +29,55 @@ namespace Duality_.Model
             sizeY = 0;
             boardColor = null;
 
-            //TODO: pass number of players and instantiate in a loop
             playerTerritories = new List<Stack<Point2>>(2);
             playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Player
             playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Enemy
+        }
+
+        /// <summary>
+        /// Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
+        /// </summary>
+        /// <param name="x">Number of columns.</param>
+        /// <param name="y">Number of rows.</param>
+        public void Initialize(int x, int y)
+        {
+            // In case we were already initialized, clean up the old stuff.
+            Cleanup();
+
+            sizeX = x;
+            sizeY = y;
+
+            // Create an array for colors.
+            boardColor = CreateArray();
+
+            Random rand = new Random(DateTime.Now.Millisecond);
+
+            // Assign random colors to the array.
+            for (int col = 0; col < sizeX; ++col)
+                for (int row = 0; row < sizeY; ++row)
+                    boardColor[col, row] = rand.Next(0, 5);
+
+            // Create an array for owners.
+            //boardOwner = CreateArray();
+
+            // Assign "-1" to all owners to show a lack of ownership.
+            boardOwner = InitArray(-1);
+
+            // Give the player's their starting ownership
+            boardOwner[0, 0] = 0;
+            boardOwner[sizeX - 1, sizeY - 1] = 1;
+
+            playerTerritories = new List<Stack<Point2>>(2);
+            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Player
+            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Enemy
+
+            playerTerritories[0].Push(new Point2(0, 0));
+            playerTerritories[1].Push(new Point2(sizeX - 1, sizeY - 1));
+
+            // An easy way to expand the initial ownership so that
+            // we get all of the matching adjacent colors.
+            FloodFill(0, boardColor[0, 0]);
+            FloodFill(1, boardColor[sizeX - 1, sizeY - 1]);
         }
 
         /// <summary>
@@ -82,9 +127,6 @@ namespace Duality_.Model
         /// <returns>A float that is evaluated to determine best move.</returns>
         private float Negamax(int depth, float alpha, float beta, int owner, ref int bestMove )
         {
-            //On first time returning, ownership has been completely filled by player 0...  This explains why 
-            //colors are filling in also...
-
             //This checks for end game or end of AI evaluation
             if (depth == 0 || (Score(0) + Score(1) == sizeX * sizeY))
             {
@@ -173,49 +215,7 @@ namespace Duality_.Model
 
             return currBestValue;
         }
-
-        /// <summary>
-        /// Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
-        /// </summary>
-        /// <param name="x">Number of columns.</param>
-        /// <param name="y">Number of rows.</param>
-        public void Initialize(int x, int y)
-        {
-            // In case we were already initialized, clean up the old stuff.
-            Cleanup();
-
-            sizeX = x;
-            sizeY = y;
-
-            // Create an array for colors.
-            boardColor = CreateArray();
-
-            Random rand = new Random(DateTime.Now.Millisecond);
-
-            // Assign random colors to the array.
-            for (int col = 0; col < sizeX; ++col)
-                for (int row = 0; row < sizeY; ++row)
-                    boardColor[col, row] =  rand.Next(0, 5);
-
-            // Create an array for owners.
-            //boardOwner = CreateArray();
-
-            // Assign "-1" to all owners to show a lack of ownership.
-            boardOwner = InitArray(-1);
-
-            // Give the player's their starting ownership
-            //TODO: handle multiplayer
-            boardOwner[0, 0] = 0;
-            boardOwner[sizeX - 1, sizeY - 1] = 1;
-            playerTerritories[0].Push(new Point2(0, 0));
-            playerTerritories[1].Push(new Point2(sizeX - 1, sizeY - 1));
-
-            // An easy way to expand the initial ownership so that
-            // we get all of the matching adjacent colors.
-            FloodFill(0, boardColor[0, 0]);
-            FloodFill(1, boardColor[sizeX - 1, sizeY - 1]);
-        }
-
+       
         /// <summary>
         /// Create an empty two dimensional array.
         /// </summary>
