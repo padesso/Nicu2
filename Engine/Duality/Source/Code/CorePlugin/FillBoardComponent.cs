@@ -20,7 +20,7 @@ namespace FloodFill
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
 
-                int numPlies = 6;
+                int numPlies = 3;
                 Stopwatch clock = new Stopwatch();
                 clock.Start();
                 int bestMove = fillGrid.BestMove(currentPlayer, numPlies);
@@ -35,27 +35,39 @@ namespace FloodFill
             fillGrid = null;
         }
 
-        int debugTickDelay = 100;
-        int debugTickCount = 100;
+        int debugTickDelay = 50;
+        int debugTickCount = 50;
+        bool playing = true;
 
         public void OnUpdate()
         {
-            if (debugTickCount >= debugTickDelay)
+            if(playing)
             {
-                Debug.WriteLine(fillGrid.DebugPrintColors());
-                debugTickCount = 0;
+                if (debugTickCount >= debugTickDelay)
+                {                    
+                    debugTickCount = 0;
 
-                //Random first player
-                Random rand = new Random();
-                
-                int bestMove = fillGrid.BestMove(currentPlayer, 3);               
-                fillGrid.FloodFill(currentPlayer, bestMove);
+                    //Random first player
+                    Random rand = new Random();
 
-                currentPlayer = currentPlayer == 1 ? 0 : 1;
-            }
-            else
-            {
-                debugTickCount++;
+                    //CPU play
+                    int bestMove = fillGrid.BestMove(currentPlayer, 3);
+                    fillGrid.FloodFill(currentPlayer, bestMove);
+
+                    //Random play
+                    //fillGrid.FloodFill(currentPlayer, rand.Next(0, 5));
+
+                    Debug.WriteLine(fillGrid.DebugPrintColors());
+
+                    currentPlayer = currentPlayer == 1 ? 0 : 1;
+
+                    if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
+                        playing = false;
+                }
+                else
+                {
+                    debugTickCount++;
+                }
             }
         }
     }

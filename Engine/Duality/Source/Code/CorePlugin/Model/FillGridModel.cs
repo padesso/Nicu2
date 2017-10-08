@@ -301,7 +301,7 @@ namespace Duality_.Model
         {
             // Change all of our current territory to the new color.
             int territoryCount = playerTerritories[owner].Count();
-            for (int i = 0; i < territoryCount; i++)
+            for (int i = territoryCount - 1; i >= 0; i--)
             {
                 Point2 p = playerTerritories[owner].ElementAt(i);
                 boardColor[p.X, p.Y] = color;
@@ -315,7 +315,7 @@ namespace Duality_.Model
             // If those tiles are unowned,
             //    we'll take ownership and put them on a stack
             //    so that we can search beyond them.
-            for (int i = 0; i < territoryCount; ++i)
+            for (int i = territoryCount - 1; i >= 0; i--)
             {
                 Point2 p = playerTerritories[owner].ElementAt(i);
 
