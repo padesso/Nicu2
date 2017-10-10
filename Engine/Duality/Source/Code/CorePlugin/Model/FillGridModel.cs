@@ -29,9 +29,7 @@ namespace Duality_.Model
             sizeY = 0;
             boardColor = null;
 
-            playerTerritories = new List<Stack<Point2>>(2);
-            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Player
-            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Enemy
+            playerTerritories = new List<Stack<Point2>>();
         }
 
         /// <summary>
@@ -67,9 +65,9 @@ namespace Duality_.Model
             boardOwner[0, 0] = 0;
             boardOwner[sizeX - 1, sizeY - 1] = 1;
 
-            playerTerritories = new List<Stack<Point2>>(2);
-            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Player
-            playerTerritories.Add(new Stack<Point2>(sizeX * sizeY));    //Enemy
+			playerTerritories.Clear();
+            playerTerritories.Add(new Stack<Point2>());    //Player
+            playerTerritories.Add(new Stack<Point2>());    //Enemy
 
             playerTerritories[0].Push(new Point2(0, 0));
             playerTerritories[1].Push(new Point2(sizeX - 1, sizeY - 1));
@@ -86,34 +84,31 @@ namespace Duality_.Model
         /// <returns>The game board colors.</returns>
         public string DebugPrintColors()
         {
-            string board = string.Empty;
+			StringBuilder sb = new StringBuilder();
 
-            for(int col = 0; col < sizeX; col++)
+            for(int x = 0; x < sizeX; x++)
             {
-                for(int row = 0; row < sizeY; row++)
+                for(int y = 0; y < sizeY; y++)
                 {
-                    board += Color(col,row).ToString() + " ";
+					sb.AppendFormat("[{0},{1}]", 
+						boardColor[x, y], 
+						boardOwner[x, y] < 0 ? " " : boardOwner[x, y].ToString()
+					);
                 }
-                board += "\n";
+				sb.AppendLine();
             }
 
-            return board;
+            return sb.ToString();
         }
+
         
         /// <summary>
         /// Release the memory of the board data structures.
         /// </summary>
         private void Cleanup()
         {
-            if(boardColor != null)
-            {
-                boardColor = null; 
-            }
-
-            if(boardOwner != null)
-            {
-                boardOwner = null;
-            }
+			boardColor = null;
+			boardOwner = null;
         }
         
         /// <summary>
@@ -176,7 +171,9 @@ namespace Duality_.Model
             int[,] origColor = boardColorList[depth - 1];
             int[,] origOwner = boardOwnerList[depth - 1];
 
-            List<Stack<Point2>> origTerritory = new List<Stack<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
+            List<Stack<Point2>> origTerritory = new List<Stack<Point2>>();
+			foreach (Stack<Point2> stack in playerTerritories)
+				origTerritory.Add(new Stack<Point2>(stack));
 
             float currBestValue = -sizeX * sizeY;
             int currBestMove = -1; 
