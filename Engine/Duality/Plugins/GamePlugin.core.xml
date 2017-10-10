@@ -14,6 +14,13 @@
             Create an instance of the game board.
             </summary>
         </member>
+        <member name="M:Duality_.Model.FillGridModel.Initialize(System.Int32,System.Int32)">
+            <summary>
+            Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
+            </summary>
+            <param name="x">Number of columns.</param>
+            <param name="y">Number of rows.</param>
+        </member>
         <member name="M:Duality_.Model.FillGridModel.DebugPrintColors">
             <summary>
             Returns the colors of the board as a string.
@@ -35,13 +42,6 @@
             <param name="owner">Which player to evaluate turn.</param>
             <param name="bestMove">Reference to best color to select.</param>
             <returns>A float that is evaluated to determine best move.</returns>
-        </member>
-        <member name="M:Duality_.Model.FillGridModel.Initialize(System.Int32,System.Int32)">
-            <summary>
-            Setup initial values for the game board.  Random colors and no ownership outside starting tiles.
-            </summary>
-            <param name="x">Number of columns.</param>
-            <param name="y">Number of rows.</param>
         </member>
         <member name="M:Duality_.Model.FillGridModel.CreateArray">
             <summary>

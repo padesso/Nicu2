@@ -20,6 +20,9 @@ namespace FloodFill
             {
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(5, 5);
+
+                //TestNegamaxSpeed(4);
+                //TestRandomPlay();
             }
         }
 
@@ -88,7 +91,9 @@ namespace FloodFill
 
                     currentPlayer = currentPlayer == 1 ? 0 : 1;
 
-                    if (fillGrid.Score(0) + fillGrid.Score(1) >= fillGrid.SizeX * fillGrid.SizeY)
+                    //TODO: Why are there duplicates in the playerterritory lists?
+
+                    if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
                         playing = false;
                 }
                 else
