@@ -18,7 +18,7 @@ namespace Duality_.Model
         protected int[,] boardColor;
         protected int[,] boardOwner;
 
-        protected List<List<Point2>> playerTerritories;
+        protected List<Stack<Point2>> playerTerritories;
 
         /// <summary>
         /// Create an instance of the game board.
@@ -28,6 +28,8 @@ namespace Duality_.Model
             sizeX = 0;
             sizeY = 0;
             boardColor = null;
+
+            playerTerritories = new List<Stack<Point2>>();
         }
 
         /// <summary>
@@ -53,6 +55,9 @@ namespace Duality_.Model
                 for (int row = 0; row < sizeY; ++row)
                     boardColor[col, row] = rand.Next(0, 5);
 
+            // Create an array for owners.
+            //boardOwner = CreateArray();
+
             // Assign "-1" to all owners to show a lack of ownership.
             boardOwner = InitArray(-1);
 
@@ -60,12 +65,12 @@ namespace Duality_.Model
             boardOwner[0, 0] = 0;
             boardOwner[sizeX - 1, sizeY - 1] = 1;
 
-            playerTerritories = new List<List<Point2>>(2);
-            playerTerritories.Add(new List<Point2>(sizeX * sizeY));    //Player
-            playerTerritories.Add(new List<Point2>(sizeX * sizeY));    //Enemy
+			playerTerritories.Clear();
+            playerTerritories.Add(new Stack<Point2>());    //Player
+            playerTerritories.Add(new Stack<Point2>());    //Enemy
 
-            playerTerritories[0].Add(new Point2(0, 0));
-            playerTerritories[1].Add(new Point2(sizeX - 1, sizeY - 1));
+            playerTerritories[0].Push(new Point2(0, 0));
+            playerTerritories[1].Push(new Point2(sizeX - 1, sizeY - 1));
 
             // An easy way to expand the initial ownership so that
             // we get all of the matching adjacent colors.
@@ -79,34 +84,31 @@ namespace Duality_.Model
         /// <returns>The game board colors.</returns>
         public string DebugPrintColors()
         {
-            string board = string.Empty;
+			StringBuilder sb = new StringBuilder();
 
-            for(int col = 0; col < sizeX; col++)
+            for(int x = 0; x < sizeX; x++)
             {
-                for(int row = 0; row < sizeY; row++)
+                for(int y = 0; y < sizeY; y++)
                 {
-                    board += Color(col,row).ToString() + " ";
+					sb.AppendFormat("[{0},{1}]", 
+						boardColor[x, y], 
+						boardOwner[x, y] < 0 ? " " : boardOwner[x, y].ToString()
+					);
                 }
-                board += "\n";
+				sb.AppendLine();
             }
 
-            return board;
+            return sb.ToString();
         }
+
         
         /// <summary>
         /// Release the memory of the board data structures.
         /// </summary>
         private void Cleanup()
         {
-            if(boardColor != null)
-            {
-                boardColor = null; 
-            }
-
-            if(boardOwner != null)
-            {
-                boardOwner = null;
-            }
+			boardColor = null;
+			boardOwner = null;
         }
         
         /// <summary>
@@ -169,7 +171,9 @@ namespace Duality_.Model
             int[,] origColor = boardColorList[depth - 1];
             int[,] origOwner = boardOwnerList[depth - 1];
 
-            List<List<Point2>> origTerritory = new List<List<Point2>>(2) { playerTerritories[0], playerTerritories[1] };
+            List<Stack<Point2>> origTerritory = new List<Stack<Point2>>();
+			foreach (Stack<Point2> stack in playerTerritories)
+				origTerritory.Add(new Stack<Point2>(stack));
 
             float currBestValue = -sizeX * sizeY;
             int currBestMove = -1; 
@@ -189,8 +193,8 @@ namespace Duality_.Model
                 // Undo move
                 boardColor = (int[,])origColor.Clone();
                 boardOwner = (int[,])origOwner.Clone();
-                playerTerritories[0] = new List<Point2>(origTerritory[0]);
-                playerTerritories[1] = new List<Point2>(origTerritory[1]);
+                playerTerritories[0] = new Stack<Point2>(origTerritory[0]);
+                playerTerritories[1] = new Stack<Point2>(origTerritory[1]);
 
                 // If the move beats our current best option, set it.
                 if (val > currBestValue)
@@ -338,7 +342,7 @@ namespace Duality_.Model
                 // make sure that it's still unowned.
                 if (boardColor[p.X, p.Y] == color && boardOwner[p.X, p.Y] == -1)
                 {
-                    playerTerritories[owner].Add(p);
+                    playerTerritories[owner].Push(p);
                     boardOwner[p.X, p.Y] = owner;
 
                     // Push adjacent tiles onto the stack
@@ -481,7 +485,7 @@ namespace Duality_.Model
                             Point2 p = trappedRegion.ElementAt(i);
                             boardOwner[p.X, p.Y] = owner;
                             boardColor[p.X, p.Y] = color;
-                            playerTerritories[owner].Add(p);
+                            playerTerritories[owner].Push(p);
                         }
                     }
                 } // Next row
