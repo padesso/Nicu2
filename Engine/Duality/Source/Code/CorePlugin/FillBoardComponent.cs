@@ -5,12 +5,15 @@ using System.Linq;
 using Duality;
 using Duality_.Model;
 using System.Diagnostics;
+using Duality.Plugins.Tilemaps;
+using Duality.Resources;
 
 namespace FloodFill
 {
     public class FillBoardComponent : Component, ICmpInitializable, ICmpUpdatable
     {
         FillGridModel fillGrid;
+        Tilemap gameBoard;
 
         int currentPlayer = 0;
 
@@ -21,8 +24,12 @@ namespace FloodFill
                 fillGrid = new FillGridModel();
                 fillGrid.Initialize(20, 20);
 
-                //TestNegamaxSpeed(6);
-                //TestRandomPlay();
+                //Get a reference the to the game board
+                gameBoard = Scene.Current.FindComponent<Tilemap>(true);
+
+                UpdateGameBoardColors();
+
+                Debug.WriteLine("Wait...");
             }
         }
 
@@ -88,7 +95,9 @@ namespace FloodFill
 
                     fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, plies));
 
-                    Debug.WriteLine(fillGrid.DebugPrintColors());
+                    UpdateGameBoardColors();
+
+                    //Debug.WriteLine(fillGrid.DebugPrintColors());
 
                     currentPlayer = currentPlayer == 1 ? 0 : 1;
 
@@ -98,6 +107,18 @@ namespace FloodFill
                 else
                 {
                     debugTickCount++;
+                }
+            }
+        }
+
+        private void UpdateGameBoardColors()
+        {
+            //populate the initial state of the game board
+            for (int col = 0; col < fillGrid.SizeX; col++)
+            {
+                for (int row = 0; row < fillGrid.SizeY; row++)
+                {
+                    gameBoard.SetTile(col, row, new Tile(fillGrid.Color(col, row)));
                 }
             }
         }

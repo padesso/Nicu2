@@ -55,6 +55,9 @@
     <Reference Include="DualityPrimitives">
       <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
     </Reference>
+    <Reference Include="Tilemaps.core">
+      <HintPath>..\..\..\Plugins\Tilemaps.core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CorePlugin.cs" />

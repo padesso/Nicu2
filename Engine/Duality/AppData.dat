@@ -1,6 +1,6 @@
 ﻿<root dataType="Struct" type="Duality.DualityAppData" id="129723834">
-  <appName dataType="String">Duality Application</appName>
-  <authorName dataType="String">Unknown</authorName>
+  <appName dataType="String">Nicu2</appName>
+  <authorName dataType="String">Patrick Adesso</authorName>
   <customData />
   <localUserData dataType="Bool">true</localUserData>
   <multisampleBackBuffer dataType="Bool">true</multisampleBackBuffer>
@@ -12,7 +12,7 @@
   <startScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
     <contentPath dataType="String">Data\Scene.Scene.res</contentPath>
   </startScene>
-  <version dataType="UInt">18</version>
-  <websiteUrl dataType="String">http://www.adamslair.net</websiteUrl>
+  <version dataType="UInt">19</version>
+  <websiteUrl dataType="String">http://www.dreambuildrepeat.com</websiteUrl>
 </root>
 <!-- XmlFormatterBase Document Separator -->
