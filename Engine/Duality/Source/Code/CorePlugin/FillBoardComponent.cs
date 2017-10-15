@@ -13,7 +13,7 @@ namespace FloodFill
     public class FillBoardComponent : Component, ICmpInitializable, ICmpUpdatable
     {
         FillGridModel fillGrid;
-        Tilemap gameBoard;
+        Tilemap tilesGameBoard;
 
         int currentPlayer = 0;
 
@@ -25,7 +25,7 @@ namespace FloodFill
                 fillGrid.Initialize(20, 20);
 
                 //Get a reference the to the game board
-                gameBoard = Scene.Current.FindComponent<Tilemap>(true);
+                tilesGameBoard = Scene.Current.FindComponent<Tilemap>(true);
 
                 UpdateGameBoardColors();
 
@@ -79,8 +79,6 @@ namespace FloodFill
             fillGrid = null;
         }
 
-        int debugTickDelay = 50;
-        int debugTickCount = 50;
         bool playing = true;
         Random rand = new Random();
         int plies = 4;
@@ -89,25 +87,59 @@ namespace FloodFill
         {
             if (playing)
             {
-                if (debugTickCount >= debugTickDelay)
+                // Player vs CPU
+                if (currentPlayer == 0)
                 {
-                    debugTickCount = 0;
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number0))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 0);
+                        currentPlayer = 1;
+                    }
 
-                    fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, plies));
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number1))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 1);
+                        currentPlayer = 1;
+                    }
 
-                    UpdateGameBoardColors();
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number2))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 2);
+                        currentPlayer = 1;
+                    }
 
-                    //Debug.WriteLine(fillGrid.DebugPrintColors());
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number3))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 3);
+                        currentPlayer = 1;
+                    }
 
-                    currentPlayer = currentPlayer == 1 ? 0 : 1;
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number4))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 4);
+                        currentPlayer = 1;
+                    }
 
-                    if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
-                        playing = false;
+                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number5))
+                    {
+                        fillGrid.FloodFill(currentPlayer, 5);
+                        currentPlayer = 1;
+                    }
                 }
                 else
                 {
-                    debugTickCount++;
+                    fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, plies));
+                    currentPlayer = 0;
                 }
+
+                // CPU vs CPU
+                //fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, plies));
+                //currentPlayer = currentPlayer == 0 ? 1 : 0;
+
+                UpdateGameBoardColors();
+
+                if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
+                    playing = false;
             }
         }
 
@@ -118,7 +150,7 @@ namespace FloodFill
             {
                 for (int row = 0; row < fillGrid.SizeY; row++)
                 {
-                    gameBoard.SetTile(col, row, new Tile(fillGrid.Color(col, row)));
+                    tilesGameBoard.SetTile(col, row, new Tile(fillGrid.Color(col, row)));
                 }
             }
         }
