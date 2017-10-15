@@ -2,40 +2,44 @@
 --------------------[ TimeCounter ]---------------
 
 Name                          Avg. Value    Min. Value    Max. Value         Samples 
-Duality\Frame:                      6.65          0.00        398.52          106313 
-  Update:                           0.16          0.00         30.98          106313 
+Duality\Frame:                     17.74          0.00      40273.97           41064 
+  Update:                           0.13          0.00         26.04           41064 
     Physics:                        0.00          0.00          0.00               1 
       Contacts:                     0.00          0.00          0.00               1 
       Controller:                   0.00          0.00          0.00               1 
       Continous:                    0.00          0.00          0.00               1 
       AddRemove:                    0.00          0.00          0.00               1 
       Solve:                        0.00          0.00          0.00               1 
-    Scene:                          0.03          0.00         12.89          106313 
-      All Components:               0.03          0.00         12.87          106313 
-      Transform:                    0.00          0.00          3.66          105990 
-    Audio:                          0.01          0.00          7.21          106313 
-  Render:                           2.50          0.40        200.12          106313 
-    SwapBuffers:                    1.75          0.00        101.29          106313 
-    QueryVisibleRenderers:          0.00          0.00          8.05          106313 
-    CollectDrawcalls:               0.30          0.04        105.86          106313 
-    OptimizeDrawcalls:              0.00          0.00          5.35          106313 
-    ProcessDrawcalls:               0.29          0.06         44.55          106313 
+    Scene:                          0.03          0.00          7.92           41064 
+      All Components:               0.03          0.00          4.83           41064 
+      Transform:                    0.01          0.00          1.31           40978 
+      RigidBody:                    0.00          0.00          0.30            2752 
+    Audio:                          0.01          0.00          3.08           41064 
+  Render:                           1.67          0.31        153.81           32810 
+    SwapBuffers:                    0.88          0.00         40.53           32806 
+    QueryVisibleRenderers:          0.02          0.00          6.41           32807 
+    CollectDrawcalls:               0.25          0.05         81.26           32807 
+      TilemapRenderer:              0.06          0.00          6.19           21904 
+    OptimizeDrawcalls:              0.02          0.00          2.57           32807 
+    ProcessDrawcalls:               0.39          0.10         40.10           32807 
     PostProcessing:                 0.00          0.00          0.00               1 
-  Log:                             11.15         10.86         11.43               2 
-  VisualPicking:                    8.28          1.92         57.88              44 
-  Unaccounted:                      3.99       -269.43        383.07          106313 
-Cameras\CamView Camera 0:           0.75          0.16        200.15          106313 
+  Log:                              2.30          0.08         44.06              81 
+  VisualPicking:                    0.00          0.00          0.00               1 
+  Unaccounted:                     16.27       -197.86      40273.89           41064 
+Cameras\CamView Camera 0:           0.79          0.20        153.84           32807 
 
 --------------------[ StatCounter ]---------------
 
-Name                                         Avg. Value    Min. Value    Max. Value         Samples 
-Duality\Stats\Audio\NumPlaying2D:                     0             0             0          106313 
-Duality\Stats\Audio\NumPlaying3D:                     0             0             0          106313 
-Duality\Stats\Render\NumDrawcalls:                    4             4             6          106313 
-Duality\Stats\Render\NumRawBatches:                   2             2             5          106313 
-Duality\Stats\Render\NumMergedBatches:                2             2             4          106313 
-Duality\Stats\Render\NumOptimizedBatches:             2             2             4          106313 
-Duality\Stats\Memory\TotalUsage:                  13648         12207         18856          106313 
-Duality\Stats\Memory\GarbageCollect0:              1356             -             -               - 
-Duality\Stats\Memory\GarbageCollect1:                84             -             -               - 
-Duality\Stats\Memory\GarbageCollect2:                13             -             -               - 
+Name                                          Avg. Value    Min. Value    Max. Value         Samples 
+Duality\Stats\Audio\NumPlaying2D:                      0             0             0           41064 
+Duality\Stats\Audio\NumPlaying3D:                      0             0             0           41064 
+Duality\Stats\Render\NumDrawcalls:                    12             6            20           32807 
+Duality\Stats\Render\NumRawBatches:                   10             4            54           32807 
+Duality\Stats\Render\NumMergedBatches:                 8             4            15           32807 
+Duality\Stats\Render\NumOptimizedBatches:              8             4            15           32807 
+Duality\Stats\Memory\TotalUsage:                   17146         10436         71247           41064 
+Duality\Stats\Memory\GarbageCollect0:               1337             -             -               - 
+Duality\Stats\Memory\GarbageCollect1:                 96             -             -               - 
+Duality\Stats\Memory\GarbageCollect2:                 20             -             -               - 
+Duality\Stats\Render\Tilemaps\NumTiles:             1191             0          1200           15989 
+Duality\Stats\Render\Tilemaps\NumVertices:          3897             0          4800           15989 

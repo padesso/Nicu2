@@ -154,6 +154,9 @@
 [Edit] Msg:     Deserializing layout: 'Duality.Editor.Plugins.ObjectInspector.ObjectInspector'
 [Edit] Msg:     Deserializing layout: 'Duality.Editor.Plugins.HelpAdvisor.HelpAdvisor'
 [Edit] Msg:     Deserializing layout: 'Duality.Editor.Plugins.LogView.LogView'
+[Edit] Msg:     Deserializing layout: 'Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette'
+[Edit] Msg:     Deserializing layout: 'Duality.Editor.Plugins.Tilemaps.TilesetEditor'
+[Core] Msg:     Assembly loaded: FarseerDuality 4.1.4.0
 [Edit] Msg:   Loading editor user data...
 [Edit] Msg: Initializing editor plugins...
 [Edit] Msg:   CamView.editor...
@@ -166,13 +169,1150 @@
 [Edit] Msg:   ProjectView.editor...
 [Edit] Msg:   SceneView.editor...
 [Edit] Msg:   Tilemaps.editor...
-[Core] Msg: Assembly loaded: FarseerDuality 4.1.4.0
 [Core] Msg: Assembly loaded: System.Security 4.0.0.0
 [Core] Msg: Assembly loaded: System.Data.SqlXml 4.0.0.0
 [Core] Msg: Assembly loaded: System.Xaml 4.0.0.0
 [Core] Msg: Assembly loaded: System.Design 4.0.0.0
 [Core] Msg: Determining OpenGL context capabilities...
 [Core] Msg: Loading Resource 'Data\Scene.Scene.res'
+[Core] Msg:   Assembly loaded: System.IO.Compression 4.0.0.0
+[Core] Msg: Loading Resource 'Data\Dev\Tile\PiecesTileset.Tileset.res'
+[Core] Msg: Loading Resource 'Data\Dev\Images\PiecesTiles.Texture.res'
+[Core] Msg:   Loading Resource 'Data\Dev\Images\PiecesTiles.Pixmap.res'
+[Core] Msg: Loading Resource 'Data\Dev\Images\PiecesTiles.Pixmap.res'
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 75
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Append(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 170
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 232
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool.UpdateAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\BrushTilemapTool.cs:line 184
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseMove(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 698
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseMove(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 722
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseMove(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseMove(Message& m)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.BeginAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\FillTilemapTool.cs:line 103
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseDown(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 748
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseDown(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 777
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseDown(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+[Edit] ERR: IndexOutOfRangeException: Index was outside the bounds of the array.
+            CallStack:
+               at Duality.Plugins.Tilemaps.Tile.UpdateAutoTileCon(Grid`1 tileGrid, Grid`1 updateMask, Int32 beginX, Int32 beginY, Int32 width, Int32 height, ContentRef`1 tileset) in c:\projects\duality\Source\Plugins\Tilemaps\Core\Tilemaps\Tile.cs:line 262
+               at Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapAction.Do() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\UndoRedoActions\EditTilemapAction.cs:line 130
+               at Duality.Editor.UndoRedoManager.AppendAction(UndoRedoAction action, Boolean performAction) in c:\projects\duality\Source\Editor\DualityEditor\UndoRedoManager.cs:line 242
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(EditTilemapActionType actionType, Tilemap tilemap, Point2 pos, Grid`1 brush, ITileDrawSource source, Point2 sourceOffset) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 1080
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool.EndAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapTools\RectTilemapTool.cs:line 86
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.EndToolAction() in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 566
+               at Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.OnMouseUp(MouseEventArgs e) in c:\projects\duality\Source\Plugins\Tilemaps\Editor\CamViewStates\TilemapEditorCamViewState.cs:line 756
+               at Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.RenderableControl_MouseUp(Object sender, MouseEventArgs e) in c:\projects\duality\Source\Plugins\EditorModules\CamView\CamViewStates\CamViewState.cs:line 740
+               at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+               at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+               at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+               at System.Windows.Forms.Control.WndProc(Message& m)
+               at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
 [Edit] Msg: Saving user data...
 [Core] Msg: Shutting down GLControl (OpenTK)...
 [Core] Msg: Shutting down OpenGL 2.1 (OpenTK)...

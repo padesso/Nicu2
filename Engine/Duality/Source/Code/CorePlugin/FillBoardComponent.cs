@@ -19,9 +19,9 @@ namespace FloodFill
             if (context == InitContext.Activate)
             {
                 fillGrid = new FillGridModel();
-                fillGrid.Initialize(5, 5);
+                fillGrid.Initialize(20, 20);
 
-                //TestNegamaxSpeed(4);
+                //TestNegamaxSpeed(6);
                 //TestRandomPlay();
             }
         }
@@ -60,7 +60,7 @@ namespace FloodFill
                 if (fillGrid.Score(0) + fillGrid.Score(1) > fillGrid.SizeX * fillGrid.SizeY)
                     numGamesUnEvenlyScored++;
 
-                fillGrid.Initialize(5, 5);
+                fillGrid.Initialize(20, 20);
             }
 
             Debug.WriteLine("Evenly Scored Games: " + numGamesEvenlyScored);
@@ -76,6 +76,7 @@ namespace FloodFill
         int debugTickCount = 50;
         bool playing = true;
         Random rand = new Random();
+        int plies = 4;
 
         public void OnUpdate()
         {
@@ -85,13 +86,11 @@ namespace FloodFill
                 {
                     debugTickCount = 0;
 
-                    fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, 3));
+                    fillGrid.FloodFill(currentPlayer, fillGrid.BestMove(currentPlayer, plies));
 
                     Debug.WriteLine(fillGrid.DebugPrintColors());
 
                     currentPlayer = currentPlayer == 1 ? 0 : 1;
-
-                    //TODO: Why are there duplicates in the playerterritory lists?
 
                     if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
                         playing = false;
