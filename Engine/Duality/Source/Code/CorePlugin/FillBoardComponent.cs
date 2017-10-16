@@ -17,18 +17,21 @@ namespace FloodFill
         Tilemap tilesGameBoard;
         Camera camera;
 
+        bool playing = true;
+        Random rand = new Random();
+        int plies = 5;
         int currentPlayer = 0;
 
         public void OnInit(InitContext context)
         {
             if (context == InitContext.Activate)
             {
-                fillGrid = new FillGridModel();
-                fillGrid.Initialize(20, 20);
-
                 //Get a reference the to the game board
                 tilesGameBoard = Scene.Current.FindComponent<Tilemap>(true);
                 camera = Scene.Current.FindComponent<Camera>(true);
+
+                fillGrid = new FillGridModel();
+                fillGrid.Initialize(tilesGameBoard.Size.X, tilesGameBoard.Size.Y);
 
                 UpdateGameBoardColors();
 
@@ -81,10 +84,6 @@ namespace FloodFill
         {
             fillGrid = null;
         }
-
-        bool playing = true;
-        Random rand = new Random();
-        int plies = 4;
 
         public void OnUpdate()
         {
