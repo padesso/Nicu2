@@ -7,6 +7,7 @@ using Duality_.Model;
 using System.Diagnostics;
 using Duality.Plugins.Tilemaps;
 using Duality.Resources;
+using Duality.Components;
 
 namespace FloodFill
 {
@@ -14,6 +15,7 @@ namespace FloodFill
     {
         FillGridModel fillGrid;
         Tilemap tilesGameBoard;
+        Camera camera;
 
         int currentPlayer = 0;
 
@@ -26,6 +28,7 @@ namespace FloodFill
 
                 //Get a reference the to the game board
                 tilesGameBoard = Scene.Current.FindComponent<Tilemap>(true);
+                camera = Scene.Current.FindComponent<Camera>(true);
 
                 UpdateGameBoardColors();
 
@@ -90,6 +93,14 @@ namespace FloodFill
                 // Player vs CPU
                 if (currentPlayer == 0)
                 {
+                    if(DualityApp.Mouse.ButtonHit(Duality.Input.MouseButton.Left))
+                    {              
+                        Vector2 tileIndex = GetTilePosFromWorldPos(camera.GetSpaceCoord(DualityApp.Mouse.Pos).Xy);
+                        Tile clickedTile = tilesGameBoard.Tiles[(int)tileIndex.X, (int)tileIndex.Y];
+                        fillGrid.FloodFill(currentPlayer, clickedTile.Index);
+                        currentPlayer = 1;
+                    }
+
                     if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number0))
                     {
                         fillGrid.FloodFill(currentPlayer, 0);
@@ -153,6 +164,17 @@ namespace FloodFill
                     tilesGameBoard.SetTile(col, row, new Tile(fillGrid.Color(col, row)));
                 }
             }
+        }
+
+        private Point2 GetTilePosFromWorldPos(Vector2 worldPos)
+        {
+            float gridMinX = tilesGameBoard.GameObj.Transform.Pos.X - (tilesGameBoard.Size.X * ((Tileset)tilesGameBoard.Tileset).TileSize.X) / 2;
+            float gridMinY = tilesGameBoard.GameObj.Transform.Pos.Y - (tilesGameBoard.Size.Y * ((Tileset)tilesGameBoard.Tileset).TileSize.Y) / 2;
+
+            int xTileIndex = (int)((worldPos.X - gridMinX) / ((Tileset)tilesGameBoard.Tileset).TileSize.X);
+            int yTileIndex = (int)((worldPos.Y - gridMinY) / ((Tileset)tilesGameBoard.Tileset).TileSize.Y);
+
+            return new Point2(xTileIndex, yTileIndex);
         }
     }
 }
