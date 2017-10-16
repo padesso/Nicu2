@@ -98,43 +98,7 @@ namespace FloodFill
                         Tile clickedTile = tilesGameBoard.Tiles[(int)tileIndex.X, (int)tileIndex.Y];
                         fillGrid.FloodFill(currentPlayer, clickedTile.Index);
                         currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number0))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 0);
-                        currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number1))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 1);
-                        currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number2))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 2);
-                        currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number3))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 3);
-                        currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number4))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 4);
-                        currentPlayer = 1;
-                    }
-
-                    if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Number5))
-                    {
-                        fillGrid.FloodFill(currentPlayer, 5);
-                        currentPlayer = 1;
-                    }
+                    }                  
                 }
                 else
                 {
@@ -149,7 +113,11 @@ namespace FloodFill
                 UpdateGameBoardColors();
 
                 if (fillGrid.Score(0) + fillGrid.Score(1) == fillGrid.SizeX * fillGrid.SizeY)
+                {
                     playing = false;
+                    Debug.WriteLine("Player 0: " + fillGrid.Score(0));
+                    Debug.WriteLine("Player 1: " + fillGrid.Score(1));
+                }
             }
         }
 
